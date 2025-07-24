@@ -101,14 +101,14 @@ export default function Register() {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+            className="w-full bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
           >
             Register
           </button>
         </form>
         <p className="text-center mt-4">
           Already have an account?{' '}
-          <Link href="/login" className="text-blue-500 hover:underline">
+          <Link href="/login" className="text-green-600 hover:text-green-700 hover:underline">
             Login
           </Link>
         </p>

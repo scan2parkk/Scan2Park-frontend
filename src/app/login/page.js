@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const router = useRouter();
 
   const { email, password } = formData;
@@ -21,18 +21,18 @@ export default function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', {
+      const res = await axios.post("http://localhost:5000/api/auth/login", {
         email,
         password,
       });
-      localStorage.setItem('token', res.data.token);
-      setSuccess('Login successful! Redirecting...');
-      setTimeout(() => router.push('/dashboard'), 2000);
+      localStorage.setItem("token", res.data.token);
+      setSuccess("Login successful! Redirecting...");
+      setTimeout(() => router.push("/dashboard"), 2000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
@@ -41,7 +41,9 @@ export default function Login() {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {success && <p className="text-green-500 text-center mb-4">{success}</p>}
+        {success && (
+          <p className="text-green-500 text-center mb-4">{success}</p>
+        )}
         <form onSubmit={onSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 mb-2" htmlFor="email">
@@ -71,14 +73,17 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+            className="w-full bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
           >
             Login
           </button>
         </form>
         <p className="text-center mt-4">
-          Don't have an account?{' '}
-          <Link href="/register" className="text-blue-500 hover:underline">
+          Don't have an account?{" "}
+          <Link
+            href="/register"
+            className="text-green-600 hover:text-green-700 hover:underline"
+          >
             Register
           </Link>
         </p>
