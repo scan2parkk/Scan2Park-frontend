@@ -1,4 +1,4 @@
-"use client"; // This component uses client-side interactivity for the mobile menu.
+"use client";
 
 import { useState, useEffect } from "react";
 import { Search, Menu, X } from "lucide-react";
@@ -40,7 +40,7 @@ function Header() {
   };
 
   return (
-    <header className="bg-white shadow-sm font-sans relative z-50">
+    <header className="bg-white shadow-sm relative z-50">
       <MaxWidthContainer>
         <div className="container mx-auto py-4 flex justify-between items-center">
           {/* Logo Section */}
@@ -58,28 +58,28 @@ function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a
-              href="#"
+              href="/"
               className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
             >
-              Ready to park now
+              Home
             </a>
             <a
-              href="#"
+              href="/parking-locations"
               className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
             >
-              Reserve parking for later
+              Find A Parking Location
             </a>
             <a
-              href="#"
+              href="/parking-locations"
               className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
             >
-              ParkMobile for Business
+              Get A Parking Pass
             </a>
             <a
-              href="#"
+              href="/about"
               className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
             >
-              Solutions for parking providers
+              About Us
             </a>
           </nav>
 

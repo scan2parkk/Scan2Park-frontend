@@ -6,7 +6,7 @@ import MaxWidthContainer from "../MaxWidthContainer";
 
 function PayForParkingSection() {
   return (
-    <section className="relative bg-white font-sans py-5">
+    <section className="relative bg-white py-5">
       <MaxWidthContainer>
         <div className="container mx-auto">
           <div className="relative rounded-lg overflow-hidden shadow-xl max-w-6xl mx-auto">

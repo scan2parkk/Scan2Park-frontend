@@ -48,7 +48,7 @@ function TestimonialSwiper() {
   };
 
   return (
-    <section className="bg-white font-sans py-5">
+    <section className="bg-white py-5">
       <MaxWidthContainer>
         <div className="container mx-auto">
           <div className="relative bg-green-100 rounded-lg p-8 md:p-12 flex items-center justify-center shadow-xl min-h-[200px] overflow-hidden">

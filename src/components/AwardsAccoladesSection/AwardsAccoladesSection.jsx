@@ -1,7 +1,8 @@
 "use client"; // This component uses client-side interactivity for the carousel functionality.
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, use } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react"; // Using lucide-react for arrow icons
+import MaxWidthContainer from "../MaxWidthContainer";
 
 function AwardsAccoladesSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,12 +17,12 @@ function AwardsAccoladesSection() {
     {
       id: 2,
       name: "2022 Stevie Winner - Gold",
-      imageUrl: "/images/AwardsImage2.jpg",
+      imageUrl: "/images/AwardsImage3.jpg",
     },
     {
       id: 3,
       name: "2022 Stevie Winner - Silver",
-      imageUrl: "/images/AwardsImage3.jpg",
+      imageUrl: "/images/AwardsImage2.jpg",
     },
     {
       id: 4,
@@ -71,76 +72,84 @@ function AwardsAccoladesSection() {
     return `translateX(-${currentIndex * (100 / itemsPerPage)}%)`;
   };
 
+  useEffect(() => {
+    setInterval(() => {
+      goToNext();
+    }, 2000);
+  }, []);
+
   return (
-    <section className="bg-white font-sans py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 text-center mb-12">
-          Awards & Accolades
-        </h2>
+    <section className="bg-white">
+      <MaxWidthContainer>
+        <div className="container mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 text-center mb-12">
+            Awards & Accolades
+          </h2>
 
-        <div className="relative flex items-center justify-center max-w-6xl mx-auto">
-          {/* Previous Button */}
-          <button
-            onClick={goToPrevious}
-            className="absolute left-0 z-10 bg-black text-white p-3 rounded-full shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-200"
-            aria-label="Previous award"
-          >
-            <ArrowLeft className="h-6 w-6" />
-          </button>
-
-          {/* Carousel Track */}
-          <div className="overflow-hidden w-full">
-            <div
-              ref={carouselRef}
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: getTransformValue() }}
+          <div className="relative flex items-center justify-center max-w-6xl mx-auto">
+            {/* Previous Button */}
+            <button
+              onClick={goToPrevious}
+              className="absolute -left-20 z-10 bg-black text-white p-3 rounded-full shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-200"
+              aria-label="Previous award"
             >
-              {awards.map((award) => (
-                <div
-                  key={award.id}
-                  className="flex-shrink-0 flex justify-center items-center p-4"
-                  style={{ width: `${100 / itemsPerPage}%` }} // Each item takes up a fraction of the visible width
-                >
-                  <img
-                    src={award.imageUrl}
-                    alt={award.name}
-                    className="max-w-full h-auto object-contain rounded-md"
-                    onError={(e) => {
-                      e.currentTarget.src =
-                        "https://placehold.co/200x200/cccccc/000000?text=Error";
-                      e.currentTarget.alt = "Image not found";
-                    }}
-                  />
-                </div>
-              ))}
+              <ArrowLeft className="h-6 w-6" />
+            </button>
+
+            {/* Carousel Track */}
+            <div className="overflow-hidden w-full">
+              <div
+                ref={carouselRef}
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: getTransformValue() }}
+              >
+                {awards.map((award) => (
+                  <div
+                    key={award.id}
+                    className="flex-shrink-0 w-50 h-50 flex justify-center items-center p-4"
+                    style={{ width: `${100 / itemsPerPage}%` }} // Each item takes up a fraction of the visible width
+                  >
+                    <img
+                      src={award.imageUrl}
+                      alt={award.name}
+                      className="w-full h-full object-contain rounded-md"
+                      onError={(e) => {
+                        e.currentTarget.src =
+                          "https://placehold.co/200x200/cccccc/000000?text=Error";
+                        e.currentTarget.alt = "Image not found";
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
+
+            {/* Next Button */}
+            <button
+              onClick={goToNext}
+              className="absolute -right-20 z-10 bg-black text-white p-3 rounded-full shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-200"
+              aria-label="Next award"
+            >
+              <ArrowRight className="h-6 w-6" />
+            </button>
           </div>
 
-          {/* Next Button */}
-          <button
-            onClick={goToNext}
-            className="absolute right-0 z-10 bg-black text-white p-3 rounded-full shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-200"
-            aria-label="Next award"
-          >
-            <ArrowRight className="h-6 w-6" />
-          </button>
+          {/* Navigation Dots (Optional, if needed for this type of swiper) */}
+          {/* For this "all visible icons move" type, dots might be less common, but included if desired */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-3 w-3 rounded-full transition-all duration-200 ${
+                  currentIndex === index ? "bg-gray-800 w-6" : "bg-gray-300"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              ></button>
+            ))}
+          </div>
         </div>
-
-        {/* Navigation Dots (Optional, if needed for this type of swiper) */}
-        {/* For this "all visible icons move" type, dots might be less common, but included if desired */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {Array.from({ length: totalPages }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-3 w-3 rounded-full transition-all duration-200 ${
-                currentIndex === index ? "bg-gray-800 w-6" : "bg-gray-300"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            ></button>
-          ))}
-        </div>
-      </div>
+      </MaxWidthContainer>
     </section>
   );
 }

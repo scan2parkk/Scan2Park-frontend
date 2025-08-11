@@ -20,18 +20,18 @@ export default function Home() {
       title: "Seamless Parking Access",
       description:
         "Enjoy seamless access to thousands of parking locations nationwide. Our intuitive platform lets you book and pay with just a few taps.",
-      imageUrl: "/images/ParkMobileBusinessSectionImage.jpg",
+      imageUrl: "/images/parking-solutions-14.jpg",
       buttonText: "Find Parking",
       buttonLink: "/locations",
     },
-    {
-      title: "Real-Time Analytics",
-      description:
-        "Track your parking performance and understand user behavior with real-time data analytics. Empower your decisions with smart insights.",
-      imageUrl: "/images/ParkMobileBusinessSectionImage.jpg",
-      buttonText: "View Dashboard",
-      buttonLink: "/analytics",
-    },
+    // {
+    //   title: "Real-Time Analytics",
+    //   description:
+    //     "Track your parking performance and understand user behavior with real-time data analytics. Empower your decisions with smart insights.",
+    //   imageUrl: "/images/ParkMobileBusinessSectionImage.jpg",
+    //   buttonText: "View Dashboard",
+    //   buttonLink: "/analytics",
+    // },
   ];
 
   return (

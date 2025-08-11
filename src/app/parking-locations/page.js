@@ -1,4 +1,3 @@
-// Rename function to uppercase (React component convention)
 "use client";
 
 import { useState } from "react";

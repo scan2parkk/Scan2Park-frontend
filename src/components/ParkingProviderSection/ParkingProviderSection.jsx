@@ -8,7 +8,7 @@ function ParkingProviderSection() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="bg-white font-sans py-5">
+    <section className="bg-white py-5">
       <MaxWidthContainer>
         <div className="container mx-auto">
           <div
@@ -29,11 +29,13 @@ function ParkingProviderSection() {
             </div>
 
             {/* Right Section - Animated Arrow Button */}
-            <div className="flex-shrink-0">
+            <div
+              className={`flex-shrink-0 ${
+                isHovered ? "translate-x-5" : "translate-x-0"
+              }`}
+            >
               <button
-                className={`bg-white text-green-700 p-4 rounded-md shadow-lg flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 transition-transform duration-400 ease-out ${
-                  isHovered ? "translate-x-5" : "translate-x-0"
-                }`}
+                className={`bg-white text-green-700 p-4 rounded-md shadow-lg flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 transition-transform duration-400 ease-out`}
                 aria-label="Learn more about parking solutions"
               >
                 <ArrowRight className={`h-8 w-8`} />

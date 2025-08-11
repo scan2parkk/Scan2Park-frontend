@@ -7,7 +7,7 @@ import MaxWidthContainer from "../MaxWidthContainer";
 function HeroSection() {
   return (
     <MaxWidthContainer>
-      <section className="relative bg-white font-sans overflow-hidden rounded-lg shadow-md mx-auto max-w-7xl">
+      <section className="relative bg-white overflow-hidden rounded-lg shadow-md mx-auto max-w-7xl">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"

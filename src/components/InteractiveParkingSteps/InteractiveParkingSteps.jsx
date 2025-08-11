@@ -102,7 +102,7 @@ function InteractiveParkingSteps() {
   ];
 
   return (
-    <section className="bg-white font-sans py-5">
+    <section className="bg-white py-5">
       <MaxWidthContainer>
         <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12">
           {/* Left Section - Text Content */}

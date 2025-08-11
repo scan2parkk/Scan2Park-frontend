@@ -37,14 +37,22 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+    <div className="min-h-screen flex gap-50 items-center justify-center bg-gray-100">
+      <div className="">
+        <img
+          src="/images/Groupsigninimage.svg"
+          alt="Sign in image"
+          className="object-contain"
+        />
+      </div>
+      <div className="bg-white p-8 rounded-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold text-left">Login to our app</h2>
+        <span className="text-gray-700">Enter email and password</span>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success && (
           <p className="text-green-500 text-center mb-4">{success}</p>
         )}
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="mt-3">
           <div className="mb-4">
             <label className="block text-gray-700 mb-2" htmlFor="email">
               Email
@@ -54,7 +62,7 @@ export default function Login() {
               name="email"
               value={email}
               onChange={onChange}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -67,7 +75,7 @@ export default function Login() {
               name="password"
               value={password}
               onChange={onChange}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -78,13 +86,13 @@ export default function Login() {
             Login
           </button>
         </form>
-        <p className="text-center mt-4">
-          Don't have an account?{" "}
+        <p className="flex gap-2 text-left mt-4">
+          <span className="text-gray-700">Don't have an account?</span>
           <Link
             href="/register"
             className="text-green-600 hover:text-green-700 hover:underline"
           >
-            Register
+            Sign up here
           </Link>
         </p>
       </div>

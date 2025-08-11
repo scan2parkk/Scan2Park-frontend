@@ -1,4 +1,4 @@
-"use client"; // This component is a client component as it might contain interactive elements in the future.
+"use client";
 
 import React from "react";
 import {
@@ -7,12 +7,12 @@ import {
   Linkedin,
   Youtube,
   MessageSquare,
-} from "lucide-react"; // Using lucide-react for social media and chat icons
+} from "lucide-react";
 import MaxWidthContainer from "../MaxWidthContainer";
 
 function Footer() {
   return (
-    <footer className="bg-black text-white font-sans pt-12 pb-6 relative">
+    <footer className="bg-black text-white pt-12 pb-6 relative">
       <MaxWidthContainer>
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Social Media Section */}
@@ -70,7 +70,7 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="/about"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                 >
                   About ParkMobile
@@ -78,7 +78,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                 >
                   Team
@@ -86,7 +86,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                 >
                   Newsroom
@@ -94,7 +94,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                 >
                   Careers
@@ -102,7 +102,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                 >
                   ParkMobile Cares
@@ -110,7 +110,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/parking-locations"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                 >
                   Parking near you
@@ -124,73 +124,73 @@ function Footer() {
             <h3 className="text-lg font-semibold mb-4">Locations</h3>
             <div className="grid grid-cols-2 gap-y-2">
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Atlanta
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Milwaukee
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Boston
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Denver
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Washington DC
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Baltimore
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Nashville
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Kansas City
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 San Francisco
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Oakland
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 Chicago
               </a>
               <a
-                href="#"
+                href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
                 More...
@@ -204,7 +204,7 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="/about"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm font-semibold"
                 >
                   Contact us
@@ -212,7 +212,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/login"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm font-semibold"
                 >
                   Log in / Sign up

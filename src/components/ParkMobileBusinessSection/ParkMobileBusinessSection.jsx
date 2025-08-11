@@ -12,7 +12,7 @@ const ParkMobileBusinessSection = ({
   reverse = false,
 }) => {
   return (
-    <section className="bg-white font-sans py-5">
+    <section className="bg-white py-5">
       <MaxWidthContainer>
         <div className="container mx-auto">
           <div
