@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --breakpoint-medium: 1200px;
+  --breakpoint-medium: 1440px;
 }
 
 @theme inline {

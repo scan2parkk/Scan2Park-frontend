@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className="">
       <HeroSection />
-      <InteractiveParkingSteps />
+      {/* <InteractiveParkingSteps /> */}
       <PayForParkingSection />
       {featureSections.map((section, index) => (
         <ParkMobileBusinessSection
