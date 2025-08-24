@@ -135,28 +135,30 @@ function ParkingSlotDetailPage({ params }) {
               Click to book an available slot
             </p>
             {slots.length > 0 ? (
-              slots.map((row, rowIndex) => (
-                <div key={rowIndex} className="flex mb-2">
-                  {row.map((slot, colIndex) => (
-                    <div
-                      key={colIndex}
-                      onClick={() => slot.isAvailable && handleBookSlot(slot)} // Use isAvailable
-                      className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${
-                        slot.isAvailable
-                          ? "bg-green-500 text-white hover:bg-green-600"
-                          : "bg-gray-300 text-gray-800"
-                      }`}
-                      style={{
-                        pointerEvents: slot.isAvailable ? "auto" : "none",
-                      }}
-                    >
-                      {slot.isAvailable
-                        ? `A${colIndex + 1}`
-                        : `O${colIndex + 1}`}
-                    </div>
-                  ))}
-                </div>
-              ))
+              slots.map((row, rowIndex) =>
+                Array.isArray(row) && row.length > 0 ? (
+                  <div key={rowIndex} className="flex mb-2">
+                    {row.map((slot, colIndex) => (
+                      <div
+                        key={colIndex}
+                        onClick={() => slot.isAvailable && handleBookSlot(slot)}
+                        className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${
+                          slot.isAvailable
+                            ? "bg-green-500 text-white hover:bg-green-600"
+                            : "bg-gray-300 text-gray-800"
+                        }`}
+                        style={{
+                          pointerEvents: slot.isAvailable ? "auto" : "none",
+                        }}
+                      >
+                        {slot.isAvailable
+                          ? `A${colIndex + 1}`
+                          : `O${colIndex + 1}`}
+                      </div>
+                    ))}
+                  </div>
+                ) : null // Skip rendering if row is not valid
+              )
             ) : (
               <p>No slots available</p>
             )}
