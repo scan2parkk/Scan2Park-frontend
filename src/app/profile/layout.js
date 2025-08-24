@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import AdminSidebar from "@/components/AdminSidebar/AdminSidebar";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,10 +24,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="bg-gray-100 min-h-screen flex text-gray-800">
-          <AdminSidebar />
-          {children}
-        </div>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

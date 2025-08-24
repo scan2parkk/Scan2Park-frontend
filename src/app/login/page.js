@@ -1,6 +1,7 @@
+// src/app/login/page.js
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -30,11 +31,54 @@ export default function Login() {
       });
       localStorage.setItem("token", res.data.token);
       setSuccess("Login successful! Redirecting...");
-      setTimeout(() => router.push("/dashboard"), 2000);
+      // Fetch user profile to check role
+      const profileRes = await axios.get(
+        "http://localhost:5000/api/user/profile",
+        {
+          headers: { Authorization: `Bearer ${res.data.token}` },
+        }
+      );
+      const user = profileRes.data;
+      setTimeout(() => {
+        if (user.role === "admin") {
+          router.push("/dashboard");
+        } else {
+          router.push("/");
+        }
+      }, 2000);
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
   };
+
+  // Check if user is already logged in on component mount
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const checkAuth = async () => {
+        try {
+          const profileRes = await axios.get(
+            "http://localhost:5000/api/user/profile",
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
+          const user = profileRes.data;
+          setTimeout(() => {
+            if (user.role === "admin") {
+              router.push("/dashboard");
+            } else {
+              router.push("/");
+            }
+          }, 0); // Immediate redirect
+        } catch (err) {
+          localStorage.removeItem("token"); // Clear invalid token
+          // No redirect on error, let user log in again
+        }
+      };
+      checkAuth();
+    }
+  }, [router]);
 
   return (
     <div className="min-h-screen flex gap-50 items-center justify-center bg-gray-100">

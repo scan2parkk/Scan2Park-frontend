@@ -1,42 +1,47 @@
+// src/app/parking-locations/page.js
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import { useRouter } from "next/navigation";
 import MaxWidthContainer from "@/components/MaxWidthContainer";
 import Link from "next/link";
+import axios from "axios";
 
 function ParkingLocationsPage() {
-  const parkingLocationsData = Array.from({ length: 25 }, (_, i) => {
-    const parkingSlots = Array(5)
-      .fill(null)
-      .map(() =>
-        Array(10)
-          .fill(null)
-          .map(() => Math.random() > 0.7)
-      );
-
-    return {
-      id: `location-${i + 1}`,
-      name: `ParkMobile Lot ${i + 1}`,
-      address: `${(i * 3 + 100)
-        .toString()
-        .padStart(3, "0")} Main St, Cityville, CA 90210`,
-      description: `A convenient parking lot in the heart of Cityville.`,
-      imageUrl: `https://placehold.co/400x250/000000/ffffff?text=Parking+Lot+${
-        i + 1
-      }`,
-      parkingSlots,
-    };
-  });
-
+  const [parkingLocationsData, setParkingLocationsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:5000/api/parking/locations"
+        );
+        setParkingLocationsData(res.data);
+      } catch (err) {
+        setError(err.response?.data?.message || "Failed to fetch locations");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLocations();
+  }, []);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
+
   const currentLocations = parkingLocationsData.slice(
     startIndex,
     startIndex + itemsPerPage
   );
+
+  console.log(currentLocations);
+
   const totalPages = Math.ceil(parkingLocationsData.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {
@@ -45,6 +50,22 @@ function ParkingLocationsPage() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500">
+        {error}
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -57,12 +78,15 @@ function ParkingLocationsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {currentLocations.map((location) => (
               <Link
-                href={`/parking-locations/${location.id}`}
-                key={location.id}
+                href={`/parking-locations/${location._id}`}
+                key={location._id}
               >
                 <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition h-full flex flex-col cursor-pointer">
                   <img
-                    src={location.imageUrl}
+                    src={
+                      location.imageUrl ||
+                      `https://placehold.co/400x250/000000/ffffff?text=Parking+Lot+${location.name}`
+                    }
                     alt={location.name}
                     className="w-full h-48 object-cover"
                   />
@@ -72,8 +96,22 @@ function ParkingLocationsPage() {
                     </h2>
                     <p className="text-gray-600 flex items-center mb-4 flex-grow">
                       <MapPin className="h-5 w-5 text-green-600 mr-2" />
-                      {location.address}
+                      {location.address || "Address not available"}
                     </p>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const token = localStorage.getItem("token");
+                        if (!token) {
+                          router.push("/login");
+                        } else {
+                          router.push(`/parking-locations/${location._id}`);
+                        }
+                      }}
+                      className="mt-auto bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
+                    >
+                      Book Now
+                    </button>
                   </div>
                 </div>
               </Link>

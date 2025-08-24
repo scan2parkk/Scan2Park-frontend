@@ -1,7 +1,35 @@
+"use client";
+
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import axios from "axios";
 
 const AdminSidebar = () => {
+  const [userProfile, setUserProfile] = useState(null);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const fetchData = async () => {
+      try {
+        // Fetch user profile
+        const profileRes = await axios.get(
+          "http://localhost:5000/api/user/profile",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        console.log(profileRes.data);
+
+        setUserProfile(profileRes.data);
+      } catch (err) {
+        setError(err.response?.data?.message || "Failed to fetch data");
+      }
+    };
+    fetchData();
+  }, []);
+
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const pathname = usePathname();
 
   const handleToggle = () => {
     setIsCollapsed(!isCollapsed);
@@ -46,8 +74,12 @@ const AdminSidebar = () => {
         <ul>
           <li className="mb-2">
             <a
-              href="#"
-              className="flex  flex-nowrap items-center p-3 rounded-lg bg-gray-800 text-purple-400 font-semibold shadow-inner"
+              href="/dashboard/liveoverview"
+              className={`flex flex-nowrap items-center p-3 rounded-lg transition-colors ${
+                pathname === "/dashboard/liveoverview"
+                  ? "bg-gray-800 text-purple-400 font-semibold shadow-inner"
+                  : "text-gray-400 hover:bg-gray-800"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,8 +94,12 @@ const AdminSidebar = () => {
           </li>
           <li className="mb-2">
             <a
-              href="#"
-              className="flex flex-nowrap items-center p-3 rounded-lg text-gray-400 hover:bg-gray-800 transition-colors"
+              href="/dashboard/parkinglocations"
+              className={`flex flex-nowrap items-center p-3 rounded-lg transition-colors ${
+                pathname === "/dashboard/parkinglocations"
+                  ? "bg-gray-800 text-purple-400 font-semibold shadow-inner"
+                  : "text-gray-400 hover:bg-gray-800"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +113,7 @@ const AdminSidebar = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              Previous Analysis
+              Parking Locations
             </a>
           </li>
         </ul>
@@ -96,35 +132,39 @@ const AdminSidebar = () => {
           />
         </div>
       </div>
-      <div
-        className={`fixed bottom-4 left-4 ${
-          isCollapsed ? "opacity-0" : "opacity-100"
-        } p-4 bg-gray-900 transition-all duration-300 rounded-2xl shadow-lg z-50`}
-      >
-        <div className="flex items-center text-white">
-          <img
-            src="https://placehold.co/40x40/5c6ac4/ffffff?text=U"
-            alt="Profile"
-            className="rounded-full"
-          />
-          <div className="ml-3">
-            <div className="text-sm font-semibold">Welcome back,</div>
-            <div className="text-lg">Suvigya</div>
-          </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 ml-4 transform rotate-180 cursor-pointer"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-              clipRule="evenodd"
+      {userProfile && (
+        <div
+          className={`fixed bottom-4 left-4 ${
+            isCollapsed ? "opacity-0" : "opacity-100"
+          } p-4 bg-gray-900 transition-all duration-300 rounded-2xl shadow-lg z-50`}
+        >
+          <div className="flex items-center text-white">
+            <img
+              src={`https://placehold.co/40x40/5c6ac4/ffffff?text=${
+                userProfile?.name?.charAt(0) || "U"
+              }`}
+              alt="Profile"
+              className="rounded-full"
             />
-          </svg>
+            <div className="ml-3">
+              <div className="text-sm font-semibold">Welcome back,</div>
+              <div className="text-lg">{userProfile?.name}</div>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 ml-4 transform rotate-180 cursor-pointer"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
