@@ -9,7 +9,7 @@ import MaxWidthContainer from "../MaxWidthContainer";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userRole, setUserRole] = useState(null);
   const router = useRouter();
 
@@ -38,6 +38,8 @@ function Header() {
     setUserRole(null);
     router.push("/login");
   };
+
+  console.log(isLoggedIn);
 
   return (
     <header className="bg-white shadow-sm relative z-50">
@@ -70,12 +72,6 @@ function Header() {
               Find A Parking Location
             </a>
             <a
-              href="/parking-locations"
-              className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
-            >
-              Get A Parking Pass
-            </a>
-            <a
               href="/about"
               className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
             >
@@ -86,13 +82,39 @@ function Header() {
           {/* Right Section - Icons */}
           <div className="flex items-center space-x-4">
             {/* Search Icon */}
-            <button
+            {/* <button
               className="p-2 text-gray-700 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-full transition-colors duration-200"
               aria-label="Search"
             >
               <Search className="h-6 w-6" />
-            </button>
-
+            </button> */}
+            {isLoggedIn ? (
+              <div>
+                <a
+                  href="/"
+                  className="hover:underline hover:text-green-600"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </a>
+              </div>
+            ) : (
+              <div>
+                <a
+                  href="/login"
+                  className="hover:underline hover:text-green-600 mr-2"
+                >
+                  Login
+                </a>
+                /
+                <a
+                  href="/register"
+                  className="hover:underline hover:text-green-600 ml-2"
+                >
+                  Signup
+                </a>
+              </div>
+            )}
             {/* Mobile Menu Button (Hamburger/Close Icon) */}
             <button
               className="md:hidden p-2 text-gray-700 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-full transition-colors duration-200"

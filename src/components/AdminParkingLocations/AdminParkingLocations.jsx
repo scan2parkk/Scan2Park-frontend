@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const AdminParkingLocations = ({
   isModalOpen,
@@ -10,6 +11,7 @@ const AdminParkingLocations = ({
   setForm,
 }) => {
   const [data, setData] = useState([]);
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,7 +40,7 @@ const AdminParkingLocations = ({
           id: loc._id || loc.id,
           name: loc.name,
           address: loc.address,
-          slots: loc.slots || "N/A",
+          slots: loc.slots || 1,
         }));
         setData((prev) => {
           const uniqueData = [...prev, ...fetchedData].filter(
@@ -120,6 +122,37 @@ const AdminParkingLocations = ({
     }
   };
 
+  // const handleAddSlot = async (locationId, currentSlots) => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     setError("Please log in to add a slot");
+  //     return;
+  //   }
+
+  //   try {
+  //     const nextSlotNumber = parseInt(currentSlots) + 1;
+  //     await axios.post(
+  //       "http://localhost:5000/api/admin/slots",
+  //       {
+  //         locationId: locationId,
+  //         slotNumber: `A${nextSlotNumber}`, // e.g., A6 if currentSlots is 5
+  //       },
+  //       { headers: { Authorization: `Bearer ${token}` } }
+  //     );
+
+  //     // Update the slots count in the data state
+  //     setData((prev) =>
+  //       prev.map((item) =>
+  //         item.id === locationId
+  //           ? { ...item, slots: nextSlotNumber.toString() }
+  //           : item
+  //       )
+  //     );
+  //   } catch (err) {
+  //     setError(err.response?.data?.message || "Failed to add slot");
+  //   }
+  // };
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div className="text-red-500">{error}</div>;
 
@@ -167,6 +200,9 @@ const AdminParkingLocations = ({
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Slots
                 </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -180,6 +216,16 @@ const AdminParkingLocations = ({
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
                     {item.slots}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <button
+                      onClick={() =>
+                        router.push("/dashboard/parkinglocations/" + item.id)
+                      }
+                      className="bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition-colors"
+                    >
+                      View Slots
+                    </button>
                   </td>
                 </tr>
               ))}

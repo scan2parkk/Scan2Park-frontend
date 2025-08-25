@@ -67,77 +67,123 @@ export default function UserProfile() {
   }
 
   return (
-    <div className="h-screen">
-      <div className="bg-white flex flex-col p-6 rounded-lg shadow-lg max-w-[1440px] mx-auto mt-8">
-        <h1 className="text-2xl font-semibold text-gray-800 mb-4">
-          User Profile
-        </h1>
+    <div className="bg-white flex flex-col p-6 rounded-lg shadow-lg max-w-[1440px] mx-auto mt-8 mb-8">
+      <div className="flex justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold text-gray-800 mb-4">
+            User Profile
+          </h1>
 
-        <div className="flex flex-col space-y-4">
-          {/* User Name */}
-          <div className="flex items-center gap-10">
-            <p className="text-lg font-medium text-gray-700">Name:</p>
-            <p className="text-lg text-gray-500">
-              {userProfile?.name || "N/A"}
-            </p>
-          </div>
-
-          {/* User Email */}
-          <div className="flex items-center gap-11">
-            <p className="text-lg font-medium text-gray-700">Email:</p>
-            <p className="text-lg text-gray-500">
-              {userProfile?.email || "N/A"}
-            </p>
-          </div>
-
-          {/* Admin Features */}
-          {userProfile?.role === "admin" && (
-            <div className="flex items-center gap-12">
-              <p className="text-lg font-medium text-gray-700">Role:</p>
-              <p className="text-lg text-gray-500">Admin</p>
+          <div className="flex flex-col space-y-4">
+            {/* User Name */}
+            <div className="flex items-center gap-10">
+              <p className="text-lg font-medium text-gray-700">Name:</p>
+              <p className="text-lg text-gray-500">
+                {userProfile?.name || "N/A"}
+              </p>
             </div>
-          )}
-        </div>
 
+            {/* User Email */}
+            <div className="flex items-center gap-11">
+              <p className="text-lg font-medium text-gray-700">Email:</p>
+              <p className="text-lg text-gray-500">
+                {userProfile?.email || "N/A"}
+              </p>
+            </div>
+
+            {/* Admin Features */}
+            {userProfile?.role === "admin" && (
+              <div className="flex items-center gap-12">
+                <p className="text-lg font-medium text-gray-700">Role:</p>
+                <p className="text-lg text-gray-500">Admin</p>
+              </div>
+            )}
+          </div>
+        </div>
+        <div>
+          <div className="rounded-2xl">
+            <div className="w-50 h-50 flex items-center text-white">
+              <img
+                src={`https://placehold.co/40x40/5c6ac4/ffffff?text=${
+                  userProfile?.name?.charAt(0)?.toUpperCase() || "U"
+                }`}
+                alt="Profile"
+                className="rounded-full w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Active Bookings */}
+      <div className="mt-10 space-y-10">
         {/* Active Bookings */}
-        <div className="mt-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
             Active Bookings
           </h2>
           {userBookings.length > 0 ? (
-            <ul className="list-disc pl-5 space-y-2">
+            <div className="grid gap-4 md:grid-cols-2 max-h-[350px] overflow-y-scroll">
               {userBookings.map((booking) => (
-                <li key={booking._id} className="text-gray-600">
-                  {booking.locationId.name} - Slot {booking.slotId.slotNumber}(
-                  {new Date(booking.startTime).toLocaleString()} to{" "}
-                  {new Date(booking.endTime).toLocaleString()})
-                </li>
+                <div
+                  key={booking._id}
+                  className="p-4 bg-white rounded-lg shadow border border-gray-200"
+                >
+                  <h3 className="text-lg font-semibold text-indigo-700">
+                    {booking.locationId.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Slot:{" "}
+                    <span className="font-medium">
+                      {booking.slotId.slotNumber}
+                    </span>
+                  </p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {new Date(booking.startTime).toLocaleString()} <br />
+                    to <br />
+                    {new Date(booking.endTime).toLocaleString()}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           ) : (
-            <p className="text-gray-500">No active bookings</p>
+            <p className="text-gray-500 italic">No active bookings</p>
           )}
-        </div>
+        </section>
 
         {/* Booking History */}
-        <div className="mt-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
             Booking History
           </h2>
           {userBookingHistory.length > 0 ? (
-            <ul className="list-disc pl-5 space-y-2">
+            <div className="grid gap-4 md:grid-cols-2 max-h-[350px] overflow-y-scroll">
               {userBookingHistory.map((booking) => (
-                <li key={booking._id} className="text-gray-600">
-                  {booking.locationId.name} - Slot {booking.slotId.slotNumber}(
-                  {new Date(booking.startTime).toLocaleString()} to{" "}
-                  {new Date(booking.endTime).toLocaleString()})
-                </li>
+                <div
+                  key={booking._id}
+                  className="p-4 bg-gray-50 rounded-lg border border-gray-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {booking.locationId.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Slot:{" "}
+                    <span className="font-medium">
+                      {booking.slotId.slotNumber}
+                    </span>
+                  </p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {new Date(booking.startTime).toLocaleString()} <br />
+                    to <br />
+                    {new Date(booking.endTime).toLocaleString()}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           ) : (
-            <p className="text-gray-500">No booking history</p>
+            <p className="text-gray-500 italic">No booking history</p>
           )}
-        </div>
+        </section>
       </div>
     </div>
   );

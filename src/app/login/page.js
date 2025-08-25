@@ -17,6 +17,21 @@ export default function Login() {
 
   const { email, password } = formData;
 
+  useEffect(() => {
+    const checkIfLoggedIn = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          return;
+        }
+      } catch (err) {
+        router.push("/");
+      }
+    };
+
+    checkIfLoggedIn();
+  }, [router]);
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 

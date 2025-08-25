@@ -49,6 +49,8 @@ function ParkingSlotDetailPage({ params }) {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
+        console.log(slotsRes.data);
+
         setSlots(slotsRes.data);
       } catch (err) {
         setError(
@@ -93,7 +95,6 @@ function ParkingSlotDetailPage({ params }) {
       );
       setIsModalOpen(false);
       alert("Booking successful!");
-      router.push("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Booking failed");
     }
@@ -135,30 +136,32 @@ function ParkingSlotDetailPage({ params }) {
               Click to book an available slot
             </p>
             {slots.length > 0 ? (
-              slots.map((row, rowIndex) =>
-                Array.isArray(row) && row.length > 0 ? (
-                  <div key={rowIndex} className="flex mb-2">
-                    {row.map((slot, colIndex) => (
-                      <div
-                        key={colIndex}
-                        onClick={() => slot.isAvailable && handleBookSlot(slot)}
-                        className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${
-                          slot.isAvailable
-                            ? "bg-green-500 text-white hover:bg-green-600"
-                            : "bg-gray-300 text-gray-800"
-                        }`}
-                        style={{
-                          pointerEvents: slot.isAvailable ? "auto" : "none",
-                        }}
-                      >
-                        {slot.isAvailable
-                          ? `A${colIndex + 1}`
-                          : `O${colIndex + 1}`}
-                      </div>
-                    ))}
-                  </div>
-                ) : null // Skip rendering if row is not valid
-              )
+              <div className="flex flex-wrap gap-2">
+                {slots
+                  .sort((a, b) => {
+                    // Sort by slotNumber (e.g., A1, A2, A3) by extracting the number
+                    const numA = parseInt(a.slotNumber.replace("A", ""));
+                    const numB = parseInt(b.slotNumber.replace("A", ""));
+                    return numA - numB;
+                  })
+                  .map((slot) => (
+                    <div
+                      key={slot._id}
+                      onClick={() => slot.isAvailable && handleBookSlot(slot)}
+                      className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${
+                        slot.isAvailable
+                          ? "bg-green-500 text-white hover:bg-green-600"
+                          : "bg-gray-300 text-gray-800"
+                      }`}
+                      style={{
+                        pointerEvents: slot.isAvailable ? "auto" : "none",
+                      }}
+                    >
+                      {slot.slotNumber}{" "}
+                      {/* Use the actual slotNumber (e.g., A1, A2) */}
+                    </div>
+                  ))}
+              </div>
             ) : (
               <p>No slots available</p>
             )}
@@ -170,22 +173,6 @@ function ParkingSlotDetailPage({ params }) {
               {location.description || "No description available"}
             </p>
           </div>
-
-          {/* Book Slot Button */}
-          {/* Replaced with modal trigger */}
-          {/* <button
-            onClick={() => {
-              const token = localStorage.getItem("token");
-              if (!token) {
-                router.push("/login");
-              } else {
-                alert("Booking feature to be implemented");
-              }
-            }}
-            className="mt-6 bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
-          >
-            Book Slot
-          </button> */}
 
           {isModalOpen && (
             <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
@@ -219,7 +206,8 @@ function ParkingSlotDetailPage({ params }) {
                     required
                   />
                   <p className="mb-4">
-                    Slot: {selectedSlot?.id || selectedSlot?._id}
+                    Slot:{" "}
+                    {selectedSlot?.slotNumber || selectedSlot?._slotNumber}
                   </p>
                   <div className="flex justify-end space-x-2">
                     <button

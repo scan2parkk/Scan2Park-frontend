@@ -74,7 +74,7 @@ export default function ParkingLocations() {
         <div className="flex justify-between items-center py-4">
           <h1 className="text-3xl font-bold">Parking Locations</h1>
           <button
-            onClick={handleOpenModal} // Safe within Client Component
+            onClick={handleOpenModal}
             className="bg-purple-600 text-white px-4 py-2 rounded-xl hover:bg-purple-700 transition-colors"
           >
             Add Parking Location

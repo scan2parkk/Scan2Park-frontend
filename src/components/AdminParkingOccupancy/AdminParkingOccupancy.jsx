@@ -1,177 +1,199 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlueBus from "/public/images/blue-bus.svg";
 import GrayBus from "/public/images/gray-bus.svg";
+import axios from "axios";
+import AdminParkingLotAllotment from "../AdminParkingLotAllotment/AdminParkingLotAllotment";
 
 const AdminParkingOccupancy = () => {
-  const [data, setData] = useState([
-    {
-      id: "a016a528-ef37-4b36-a855-5990f9ea6979",
-      name: "Downtown Garage",
-      location: "123 Main St, Cityville",
-      slots: "60",
-    },
-    {
-      id: "a016a528-ef37-4b36-a855-5990f9ea6939",
-      name: "Riverside Parking",
-      location: "45 River Rd, Cityville",
-      slots: "85",
-    },
-    {
-      id: "a016a528-ef37-4b36-a855-3990f9ea6979",
-      name: "East Side Lot",
-      location: "789 East Ave, Cityville",
-      slots: "40",
-    },
-    {
-      id: "a016a528-ef37-4b36-a855-6990f9ea6979",
-      name: "West End Garage",
-      location: "321 West Blvd, Cityville",
-      slots: "75",
-    },
-    {
-      id: "a016a528-ef37-4b36-a855-5990f9ea6679",
-      name: "Downtown Garage",
-      location: "123 Main St, Cityville",
-      slots: "60",
-    },
-    {
-      id: "a016a528-ef37-4b46-a855-5990f9ea6979",
-      name: "Riverside Parking",
-      location: "45 River Rd, Cityville",
-      slots: "85",
-    },
-    {
-      id: "a016a528-gf37-4b36-a855-5990f9ea6979",
-      name: "East Side Lot",
-      location: "789 East Ave, Cityville",
-      slots: "40",
-    },
-    {
-      id: "a016a558-ef37-4b36-a855-5990f9ea6979",
-      name: "West End Garage",
-      location: "321 West Blvd, Cityville",
-      slots: "75",
-    },
-    {
-      id: "a016a523-ef37-4b36-a855-5990f9ea6979",
-      name: "Downtown Garage",
-      location: "123 Main St, Cityville",
-      slots: "60",
-    },
-    {
-      id: "a0161528-ef37-4b36-a855-5990f9ea6979",
-      name: "Riverside Parking",
-      location: "45 River Rd, Cityville",
-      slots: "85",
-    },
-    {
-      id: "a0162528-ef37-4b36-a855-5990f9ea6979",
-      name: "East Side Lot",
-      location: "789 East Ave, Cityville",
-      slots: "40",
-    },
-    {
-      id: "a016a508-ef37-4b36-a855-5990f9ea6979",
-      name: "West End Garage",
-      location: "321 West Blvd, Cityville",
-      slots: "75",
-    },
-    {
-      id: "1016a528-ef37-4b36-a855-5990f9ea6979",
-      name: "Downtown Garage",
-      location: "123 Main St, Cityville",
-      slots: "60",
-    },
-    {
-      id: "a012a528-ef37-4b36-a855-5990f9ea6979",
-      name: "Riverside Parking",
-      location: "45 River Rd, Cityville",
-      slots: "85",
-    },
-    {
-      id: "a016a528-ef37-4b31-a855-5990f9ea6979",
-      name: "East Side Lot",
-      location: "789 East Ave, Cityville",
-      slots: "40",
-    },
-    {
-      id: "a016a528-ef37-4b32-a855-5990f9ea6979",
-      name: "West End Garage",
-      location: "321 West Blvd, Cityville",
-      slots: "75",
-    },
-    {
-      id: "a016a528-ef37-4b33-a855-5990f9ea6979",
-      name: "Central Plaza Parking",
-      location: "555 Central Plaza, Cityville",
-      slots: "100",
-    },
-    {
-      id: "a016a528-ef37-4b36-a800-5990f9ea6979",
-      name: "Tech Park Lot",
-      location: "101 Innovation Way, Cityville",
-      slots: "50",
-    },
-    {
-      id: "a016a528-ef37-4b36-a855-599021ea6979",
-      name: "Greenwood Mall Parking",
-      location: "200 Greenwood Dr, Cityville",
-      slots: "120",
-    },
-    {
-      id: "a016a528-ef37-4b36-a855-5990239ea6979",
-      name: "Airport Parking Zone A",
-      location: "1 Skyway Dr, Cityville",
-      slots: "150",
-    },
-    {
-      id: "a016a528-ef37-4b36-a855-599029ea6979",
-      name: "Harborfront Parking",
-      location: "88 Dockside Ln, Cityville",
-      slots: "70",
-    },
-    {
-      id: "a016a528-ef37-4b36-a855-5990f9ea6209",
-      name: "City Stadium Lot",
-      location: "90 Victory Rd, Cityville",
-      slots: "95",
-    },
-  ]);
-  const renderRow = (rowNumber, occupiedSlots, totalSlots) => {
-    const slots = [];
-    for (let i = 0; i < totalSlots; i++) {
-      const isOccupied = i < occupiedSlots;
-      slots.push(
-        <div key={i} className="h-8 w-8">
-          <img src={isOccupied ? BlueBus.src : GrayBus.src} alt="blue bus" />
-        </div>
-      );
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5); // Reduced for shorter table
+  const [selectedLocationId, setSelectedLocationId] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("Please log in");
+      setIsLoading(false);
+      return;
     }
-    return (
-      <div key={rowNumber} className="flex items-center space-x-2 mb-2">
-        <div className="text-gray-500 text-sm w-12 flex-shrink-0">
-          Row {rowNumber}
-        </div>
-        <div className="flex space-x-2 overflow-x-auto">{slots}</div>
-      </div>
-    );
+
+    const fetchLocations = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:5000/api/parking/locations",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setData(res.data);
+      } catch (err) {
+        setError(err.response?.data?.message || "Failed to fetch locations");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLocations();
+  }, []);
+
+  const filteredData = data.filter((item) =>
+    `${item.name} ${item.address}`
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  const handleShowSlots = (locationId) => {
+    setSelectedLocationId(locationId);
+    const slotsSection = document.getElementById("slots-section");
+    if (slotsSection) slotsSection.scrollIntoView({ behavior: "smooth" });
   };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div className="text-red-500">{error}</div>;
+
   return (
     <>
       <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-200 col-span-1">
         <h2 className="text-xl font-bold mb-4">Parking Locations</h2>
-        pass
+        <div className="relative mb-4">
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="pl-8 pr-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 w-full"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </div>
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50 sticky top-0">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Address
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {currentItems.map((item) => (
+              <tr key={item._id}>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  {item.name}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {item.address}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  <button
+                    onClick={() => handleShowSlots(item._id)}
+                    className="bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition-colors"
+                  >
+                    Show Slots
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="flex justify-between items-center mt-4 text-sm text-gray-500">
+          <div>
+            <select
+              value={itemsPerPage}
+              onChange={(e) => {
+                setItemsPerPage(parseInt(e.target.value));
+                setCurrentPage(1);
+              }}
+              className="px-2 py-1 border rounded-lg"
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+            </select>
+            <span className="ml-2">Items per page</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="p-1 rounded-lg border border-gray-300 hover:bg-gray-100 transition-colors disabled:opacity-50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="p-1 rounded-lg border border-gray-300 hover:bg-gray-100 transition-colors disabled:opacity-50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-200 col-span-1">
-        <h2 className="text-xl font-bold mb-4">Parking Occupancy</h2>
-        {renderRow(1, 3, 5)}
-        {renderRow(2, 2, 5)}
-        {renderRow(3, 4, 5)}
-        {renderRow(4, 1, 5)}
-        {renderRow(5, 3, 5)}
-      </div>
+      {selectedLocationId && (
+        <div id="slots-section" className="mt-6">
+          <AdminParkingLotAllotment locationId={selectedLocationId} />
+        </div>
+      )}
     </>
   );
 };
