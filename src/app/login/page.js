@@ -146,7 +146,7 @@ export default function Login() {
           </button>
         </form>
         <p className="flex gap-2 text-left mt-4">
-          <span className="text-gray-700">Don't have an account?</span>
+          <span className="text-gray-700">Don&apos;t have an account?</span>
           <Link
             href="/register"
             className="text-green-600 hover:text-green-700 hover:underline"

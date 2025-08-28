@@ -8,7 +8,7 @@ import CoursesLearnersAndMentors from "@/components/Charts/MonthlyParkingChart/M
 import MentorAndLearner from "@/components/Charts/DailyParkingChart/DailyParkingChart";
 import EventCalender from "@/components/Charts/EventCalender/EventCalender";
 
-export default function liveOverview() {
+export default function LiveOverview() {
   const [error, setError] = useState("");
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(false);
