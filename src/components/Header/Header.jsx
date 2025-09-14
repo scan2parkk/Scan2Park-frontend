@@ -9,7 +9,8 @@ import MaxWidthContainer from "../MaxWidthContainer";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLoginSignup, setShowLoginSignup] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const router = useRouter();
 
@@ -21,14 +22,16 @@ function Header() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
+      setIsLoggedIn(true);
+      setShowLoginSignup(true);
       try {
         const decoded = jwtDecode(token);
-        setIsLoggedIn(true);
         setUserRole(decoded.role);
       } catch (err) {
-        setIsLoggedIn(false);
         setUserRole(null);
       }
+    } else {
+      setIsLoggedIn(false);
     }
   }, []);
 
@@ -38,8 +41,6 @@ function Header() {
     setUserRole(null);
     router.push("/login");
   };
-
-  console.log(isLoggedIn);
 
   return (
     <header className="bg-white shadow-sm relative z-50">
@@ -80,16 +81,13 @@ function Header() {
           </nav>
 
           {/* Right Section - Icons */}
-          <div className="flex items-center space-x-4">
-            {/* Search Icon */}
-            {/* <button
-              className="p-2 text-gray-700 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-full transition-colors duration-200"
-              aria-label="Search"
-            >
-              <Search className="h-6 w-6" />
-            </button> */}
+          <div
+            className={`flex items-center space-x-4 ${
+              showLoginSignup ? "opacity-100" : "opacity-0"
+            }`}
+          >
             {isLoggedIn ? (
-              <div>
+              <div className="w-[110px] flex justify-end">
                 <a
                   href="/"
                   className="hover:underline hover:text-green-600"

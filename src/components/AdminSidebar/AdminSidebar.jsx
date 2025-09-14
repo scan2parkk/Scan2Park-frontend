@@ -13,7 +13,7 @@ const AdminSidebar = () => {
       try {
         // Fetch user profile
         const profileRes = await axios.get(
-          "http://localhost:5000/api/user/profile",
+          "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

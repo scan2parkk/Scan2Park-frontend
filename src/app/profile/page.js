@@ -23,7 +23,7 @@ export default function UserProfile() {
 
         // Fetch user profile
         const profileRes = await axios.get(
-          "http://localhost:5000/api/user/profile",
+          "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -32,7 +32,7 @@ export default function UserProfile() {
 
         // Fetch active bookings
         const bookingsRes = await axios.get(
-          "http://localhost:5000/api/user/bookings",
+          "https://smart-parking-backend-asyg.onrender.com/api/user/bookings",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -41,7 +41,7 @@ export default function UserProfile() {
 
         // Fetch booking history
         const historyRes = await axios.get(
-          "http://localhost:5000/api/user/booking-history",
+          "https://smart-parking-backend-asyg.onrender.com/api/user/booking-history",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -104,9 +104,8 @@ export default function UserProfile() {
           <div className="rounded-2xl">
             <div className="w-50 h-50 flex items-center text-white">
               <img
-                src={`https://placehold.co/40x40/5c6ac4/ffffff?text=${
-                  userProfile?.name?.charAt(0)?.toUpperCase() || "U"
-                }`}
+                src={`https://placehold.co/40x40/5c6ac4/ffffff?text=${userProfile?.name?.charAt(0)?.toUpperCase() || "U"
+                  }`}
                 alt="Profile"
                 className="rounded-full w-full h-full object-cover"
               />
