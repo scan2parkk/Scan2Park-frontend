@@ -1,4 +1,3 @@
-// src/app/login/page.js
 "use client";
 
 import { useState, useEffect } from "react";
@@ -40,7 +39,7 @@ export default function Login() {
     setError("");
     setSuccess("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post("https://smart-parking-backend-asyg.onrender.com/api/auth/login", {
         email,
         password,
       });
@@ -48,7 +47,7 @@ export default function Login() {
       setSuccess("Login successful! Redirecting...");
       // Fetch user profile to check role
       const profileRes = await axios.get(
-        "http://localhost:5000/api/user/profile",
+        "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
         {
           headers: { Authorization: `Bearer ${res.data.token}` },
         }
@@ -73,7 +72,7 @@ export default function Login() {
       const checkAuth = async () => {
         try {
           const profileRes = await axios.get(
-            "http://localhost:5000/api/user/profile",
+            "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -146,7 +145,7 @@ export default function Login() {
           </button>
         </form>
         <p className="flex gap-2 text-left mt-4">
-          <span className="text-gray-700">Don't have an account?</span>
+          <span className="text-gray-700">Don&apos;t have an account?</span>
           <Link
             href="/register"
             className="text-green-600 hover:text-green-700 hover:underline"
