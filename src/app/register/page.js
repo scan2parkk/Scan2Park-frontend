@@ -26,7 +26,7 @@ export default function Register() {
     setError("");
     setSuccess("");
     try {
-      const res = await axios.post("https://smart-parking-backend-asyg.onrender.com/api/auth/register", {
+      const res = await axios.post("https://scan2park-backend.onrender.com/api/auth/register", {
         name,
         email,
         password,

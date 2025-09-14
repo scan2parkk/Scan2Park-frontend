@@ -20,7 +20,7 @@ function ParkingLocationsPage() {
     const fetchLocations = async () => {
       try {
         const res = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/parking/locations"
+          "https://scan2park-backend.onrender.com/api/parking/locations"
         );
         setParkingLocationsData(res.data);
       } catch (err) {
@@ -131,8 +131,8 @@ function ParkingLocationsPage() {
                 key={i}
                 onClick={() => handlePageChange(i + 1)}
                 className={`px-4 py-2 rounded-md font-medium ${currentPage === i + 1
-                    ? "bg-green-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
+                  ? "bg-green-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
                   }`}
               >
                 {i + 1}

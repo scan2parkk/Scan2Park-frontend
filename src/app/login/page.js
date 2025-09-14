@@ -39,7 +39,7 @@ export default function Login() {
     setError("");
     setSuccess("");
     try {
-      const res = await axios.post("https://smart-parking-backend-asyg.onrender.com/api/auth/login", {
+      const res = await axios.post("https://scan2park-backend.onrender.com/api/auth/login", {
         email,
         password,
       });
@@ -47,7 +47,7 @@ export default function Login() {
       setSuccess("Login successful! Redirecting...");
       // Fetch user profile to check role
       const profileRes = await axios.get(
-        "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
+        "https://scan2park-backend.onrender.com/api/user/profile",
         {
           headers: { Authorization: `Bearer ${res.data.token}` },
         }
@@ -72,7 +72,7 @@ export default function Login() {
       const checkAuth = async () => {
         try {
           const profileRes = await axios.get(
-            "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
+            "https://scan2park-backend.onrender.com/api/user/profile",
             {
               headers: { Authorization: `Bearer ${token}` },
             }

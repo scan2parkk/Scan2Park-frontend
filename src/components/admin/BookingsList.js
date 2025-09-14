@@ -7,7 +7,7 @@ export default function BookingsList({ bookings, onBookingDeleted }) {
     if (!confirm('Are you sure you want to delete this booking?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`https://smart-parking-backend-asyg.onrender.com/api/admin/bookings/${bookingId}`, {
+      await axios.delete(`https://scan2park-backend.onrender.com/api/admin/bookings/${bookingId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       onBookingDeleted(bookingId);

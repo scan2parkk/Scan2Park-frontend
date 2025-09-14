@@ -23,7 +23,7 @@ export default function UserProfile() {
 
         // Fetch user profile
         const profileRes = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
+          "https://scan2park-backend.onrender.com/api/user/profile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -32,7 +32,7 @@ export default function UserProfile() {
 
         // Fetch active bookings
         const bookingsRes = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/user/bookings",
+          "https://scan2park-backend.onrender.com/api/user/bookings",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -41,7 +41,7 @@ export default function UserProfile() {
 
         // Fetch booking history
         const historyRes = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/user/booking-history",
+          "https://scan2park-backend.onrender.com/api/user/booking-history",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

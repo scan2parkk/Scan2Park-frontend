@@ -18,7 +18,7 @@ export default function AddLocation({ onLocationAdded }) {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
-        'https://smart-parking-backend-asyg.onrender.com/api/admin/locations',
+        'https://scan2park-backend.onrender.com/api/admin/locations',
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -24,7 +24,7 @@ export default function ParkingLocationById({ params }) {
 
         // Fetch user profile
         const profileRes = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
+          "https://scan2park-backend.onrender.com/api/user/profile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -38,7 +38,7 @@ export default function ParkingLocationById({ params }) {
         }
 
         const locationsRes = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/parking/locations",
+          "https://scan2park-backend.onrender.com/api/parking/locations",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -48,7 +48,7 @@ export default function ParkingLocationById({ params }) {
         setLocation(foundLocation);
 
         const slotsRes = await axios.get(
-          `https://smart-parking-backend-asyg.onrender.com/api/parking/slots/${id}`,
+          `https://scan2park-backend.onrender.com/api/parking/slots/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -113,8 +113,8 @@ export default function ParkingLocationById({ params }) {
                       key={slot._id}
                       onClick={() => slot.isAvailable && handleBookSlot(slot)}
                       className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${slot.isAvailable
-                          ? "bg-green-500 text-white hover:bg-green-600"
-                          : "bg-gray-300 text-gray-800"
+                        ? "bg-green-500 text-white hover:bg-green-600"
+                        : "bg-gray-300 text-gray-800"
                         }`}
                       style={{
                         pointerEvents: slot.isAvailable ? "auto" : "none",
