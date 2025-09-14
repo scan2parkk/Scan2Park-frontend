@@ -21,7 +21,7 @@ export default function BookSlotModal({ isOpen, onClose, locationId, slotId, onB
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/parking/book',
+        'https://smart-parking-backend-asyg.onrender.com/api/parking/book',
         { locationId, slotId, ...formData },
         { headers: { Authorization: `Bearer ${token}` } }
       );

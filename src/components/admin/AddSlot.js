@@ -18,7 +18,7 @@ export default function AddSlot({ locations, onSlotAdded }) {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
-        'http://localhost:5000/api/admin/slots',
+        'https://smart-parking-backend-asyg.onrender.com/api/admin/slots',
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

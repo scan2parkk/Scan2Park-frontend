@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import Analytics from '@/components/admin/Analytics';
 import AddLocation from '@/components/admin/AddLocation';
 import BookingsList from '@/components/admin/BookingsList';
@@ -54,20 +54,20 @@ export default function AdminDashboard() {
     const fetchData = async () => {
       try {
         // Fetch users
-        const usersRes = await axios.get('http://localhost:5000/api/admin/users', {
+        const usersRes = await axios.get('https://smart-parking-backend-asyg.onrender.com/api/admin/users', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(usersRes.data);
 
         // Fetch locations
-        const locationsRes = await axios.get('http://localhost:5000/api/parking/locations');
+        const locationsRes = await axios.get('https://smart-parking-backend-asyg.onrender.com/api/parking/locations');
         setLocations(locationsRes.data);
 
         // Fetch slots for each location
         const slotsData = {};
         for (const location of locationsRes.data) {
           const slotsRes = await axios.get(
-            `http://localhost:5000/api/parking/slots/${location._id}`,
+            `https://smart-parking-backend-asyg.onrender.com/api/parking/slots/${location._id}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           slotsData[location._id] = slotsRes.data;
@@ -75,7 +75,7 @@ export default function AdminDashboard() {
         setSlots(slotsData);
 
         // Fetch bookings
-        const bookingsRes = await axios.get('http://localhost:5000/api/admin/bookings', {
+        const bookingsRes = await axios.get('https://smart-parking-backend-asyg.onrender.com/api/admin/bookings', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setBookings(bookingsRes.data);

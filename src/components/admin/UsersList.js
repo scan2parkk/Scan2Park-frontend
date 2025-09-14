@@ -7,7 +7,7 @@ export default function UsersList({ users, onUserDeleted }) {
     if (!confirm('Are you sure you want to delete this user?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/admin/users/${userId}`, {
+      await axios.delete(`https://smart-parking-backend-asyg.onrender.com/api/admin/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       onUserDeleted(userId);

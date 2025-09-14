@@ -24,7 +24,7 @@ const AdminParkingLotAllotment = ({ locationId }) => {
       try {
         // Fetch all locations to get the name
         const locationsRes = await axios.get(
-          "http://localhost:5000/api/parking/locations",
+          "https://smart-parking-backend-asyg.onrender.com/api/parking/locations",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -36,7 +36,7 @@ const AdminParkingLotAllotment = ({ locationId }) => {
 
         // Fetch slots for the specific locationId
         const slotsRes = await axios.get(
-          `http://localhost:5000/api/parking/slots/${locationId}`,
+          `https://smart-parking-backend-asyg.onrender.com/api/parking/slots/${locationId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

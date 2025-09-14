@@ -26,7 +26,7 @@ const AdminParkingOccupancy = () => {
     const fetchLocations = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/parking/locations",
+          "https://smart-parking-backend-asyg.onrender.com/api/parking/locations",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
