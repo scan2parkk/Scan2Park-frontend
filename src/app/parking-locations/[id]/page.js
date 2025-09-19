@@ -6,6 +6,7 @@ import MaxWidthContainer from "@/components/MaxWidthContainer";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { use } from "react";
+import CheckoutButton from "@/components/CheckoutButton";
 
 function ParkingSlotDetailPage({ params }) {
   const { id } = use(params);
@@ -134,6 +135,9 @@ function ParkingSlotDetailPage({ params }) {
             <h2 className="text-2xl font-semibold mb-4">Parking Slots</h2>
             <p className="mb-4 text-gray-500">
               Click to book an available slot
+            </p>
+            <p>
+              <CheckoutButton/>
             </p>
             {slots.length > 0 ? (
               <div className="flex flex-wrap gap-2">
