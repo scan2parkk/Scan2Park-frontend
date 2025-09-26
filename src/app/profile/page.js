@@ -23,7 +23,7 @@ export default function UserProfile() {
 
         // Fetch user profile
         const profileRes = await axios.get(
-          "https://scan2park-backend.onrender.com/api/user/profile",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/profile`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -32,7 +32,7 @@ export default function UserProfile() {
 
         // Fetch active bookings
         const bookingsRes = await axios.get(
-          "https://scan2park-backend.onrender.com/api/user/bookings",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/bookings`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -41,7 +41,7 @@ export default function UserProfile() {
 
         // Fetch booking history
         const historyRes = await axios.get(
-          "https://scan2park-backend.onrender.com/api/user/booking-history",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/booking-history`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

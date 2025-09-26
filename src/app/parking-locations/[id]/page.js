@@ -33,7 +33,7 @@ function ParkingSlotDetailPage({ params }) {
     const fetchData = async () => {
       try {
         const locationsRes = await axios.get(
-          "https://scan2park-backend.onrender.com/api/parking/locations",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/locations`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -44,7 +44,7 @@ function ParkingSlotDetailPage({ params }) {
 
         const locationId = foundLocation._id;
         const slotsRes = await axios.get(
-          `https://scan2park-backend.onrender.com/api/parking/slots/${locationId}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/slots/${locationId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -84,7 +84,7 @@ function ParkingSlotDetailPage({ params }) {
 
     try {
       const res = await axios.post(
-        "https://scan2park-backend.onrender.com/api/parking/book",
+        `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/book`,
         {
           locationId: id,
           slotId: bookingForm.slotId,
