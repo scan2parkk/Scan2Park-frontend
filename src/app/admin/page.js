@@ -54,20 +54,20 @@ export default function AdminDashboard() {
     const fetchData = async () => {
       try {
         // Fetch users
-        const usersRes = await axios.get('https://scan2park-backend.onrender.com/api/admin/users', {
+        const usersRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/admin/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(usersRes.data);
 
         // Fetch locations
-        const locationsRes = await axios.get('https://scan2park-backend.onrender.com/api/parking/locations');
+        const locationsRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/locations`);
         setLocations(locationsRes.data);
 
         // Fetch slots for each location
         const slotsData = {};
         for (const location of locationsRes.data) {
           const slotsRes = await axios.get(
-            `https://scan2park-backend.onrender.com/api/parking/slots/${location._id}`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/slots/${location._id}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           slotsData[location._id] = slotsRes.data;
@@ -75,7 +75,7 @@ export default function AdminDashboard() {
         setSlots(slotsData);
 
         // Fetch bookings
-        const bookingsRes = await axios.get('https://scan2park-backend.onrender.com/api/admin/bookings', {
+        const bookingsRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/admin/bookings`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setBookings(bookingsRes.data);

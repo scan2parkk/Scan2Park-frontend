@@ -29,7 +29,7 @@ const AdminParkingLocations = ({
     const fetchLocations = async () => {
       try {
         const res = await axios.get(
-          "https://scan2park-backend.onrender.com/api/parking/locations",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/locations`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -85,7 +85,7 @@ const AdminParkingLocations = ({
 
     try {
       const res = await axios.post(
-        "https://scan2park-backend.onrender.com/api/admin/locations",
+        `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/admin/locations`,
         {
           name: form.name,
           address: form.address,
@@ -97,7 +97,7 @@ const AdminParkingLocations = ({
       const totalSlots = parseInt(form.slots);
       for (let i = 1; i <= totalSlots; i++) {
         await axios.post(
-          "https://scan2park-backend.onrender.com/api/admin/slots",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/admin/slots`,
           {
             locationId: res.data._id,
             slotNumber: `A${i}`, // Example slot numbering (e.g., A1, A2, ...)
@@ -132,7 +132,7 @@ const AdminParkingLocations = ({
   //   try {
   //     const nextSlotNumber = parseInt(currentSlots) + 1;
   //     await axios.post(
-  //       "https://scan2park-backend.onrender.com/api/admin/slots",
+  //       "${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/admin/slots",
   //       {
   //         locationId: locationId,
   //         slotNumber: `A${nextSlotNumber}`, // e.g., A6 if currentSlots is 5
