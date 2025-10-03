@@ -20,12 +20,12 @@ function MissionPeopleSection() {
     leadership: {
       title: "Our dedicated leaders",
       description:
-        "Meet the team driving ParkMobile forward, committed to innovation and excellence in the parking industry.",
+        "Meet the team driving Scan2Park forward, committed to innovation and excellence in the parking industry.",
     },
     culture: {
       title: "A collaborative environment",
       description:
-        "At ParkMobile, we foster a culture of collaboration, innovation, and customer-centricity, empowering our employees to thrive.",
+        "At Scan2Park, we foster a culture of collaboration, innovation, and customer-centricity, empowering our employees to thrive.",
     },
   };
 
@@ -39,7 +39,7 @@ function MissionPeopleSection() {
               Our mission & people
             </h2>
             <p className="text-lg text-gray-600">
-              For decades, parking was a hassle. Then in 2008, ParkMobile
+              For decades, parking was a hassle. Then in 2008, Scan2Park
               launched with a simple goal: make parking easier. Today, our team
               is committed to creating tech-based solutions that power smart
               mobility and make parking hassles of the past obsolete.
@@ -59,8 +59,8 @@ function MissionPeopleSection() {
                     text-lg font-semibold py-2 px-4 rounded-md transition-all duration-300
                     ${
                       activeTab === tabKey
-                        ? "text-green-700 border-l-4 border-green-700 bg-green-50"
-                        : "text-gray-600 hover:text-green-700 hover:bg-gray-50 border-l-4 border-transparent"
+                        ? "text-[var(--primary)] border-l-4 border-[var(--primary)] bg-green-50"
+                        : "text-gray-600 hover:text-[var(--primary)] hover:bg-gray-50 border-l-4 border-transparent"
                     }
                     text-left w-full
                   `}
@@ -80,7 +80,7 @@ function MissionPeopleSection() {
             </div>
 
             {/* Right Side - Blue Box */}
-            <div className="bg-blue-600 text-white p-8 md:p-12 rounded-lg shadow-xl flex items-center justify-center text-center w-full lg:w-1/2 max-w-md lg:max-w-none min-h-[250px]">
+            <div className="bg-[var(--primary)] text-white p-8 md:p-12 rounded-lg shadow-xl flex items-center justify-center text-center w-full lg:w-1/2 max-w-md lg:max-w-none min-h-[250px]">
               <p className="text-3xl md:text-4xl font-bold leading-tight">
                 Striving for
                 <br />
@@ -93,8 +93,8 @@ function MissionPeopleSection() {
 
           {/* Bottom Section - Careers Button */}
           <div className="text-center mt-12">
-            <button className="bg-white border-2 border-green-600 text-green-600 hover:bg-green-50 hover:text-green-700 font-semibold py-3 px-8 rounded-md shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-              ParkMobile careers
+            <button className="bg-white border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-green-50 hover:text-[var(--primary)] font-semibold py-3 px-8 rounded-md shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50">
+              Scan2Park careers
             </button>
           </div>
         </div>

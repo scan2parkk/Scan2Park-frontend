@@ -3,18 +3,18 @@ import CoreValuesSection from "@/components/CoreValuesSection/CoreValuesSection"
 import MissionPeopleSection from "@/components/MissionPeopleSection/MissionPeopleSection";
 import NewsBlogSection from "@/components/NewsBlogSection/NewsBlogSection";
 import ParkingStartingPointSection from "@/components/ParkingStartingPointSection/ParkingStartingPointSection";
-import WhatIsParkMobileSection from "@/components/WhatIsParkMobileSection/WhatIsParkMobileSection";
+import WhatIsScan2ParkSection from "@/components/WhatIsScan2ParkSection/WhatIsScan2ParkSection";
 import React from "react";
 
 const AboutPage = () => {
   return (
     <>
       <ParkingStartingPointSection />
-      <WhatIsParkMobileSection />
+      <WhatIsScan2ParkSection />
       <MissionPeopleSection />
       <CoreValuesSection />
       <AwardsAccoladesSection />
-      <WhatIsParkMobileSection />
+      <WhatIsScan2ParkSection />
       <NewsBlogSection />
     </>
   );

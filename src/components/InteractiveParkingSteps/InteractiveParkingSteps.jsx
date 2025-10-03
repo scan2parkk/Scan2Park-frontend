@@ -72,7 +72,7 @@ function InteractiveParkingSteps() {
       number: (
         <img
           src="https://placehold.co/40x40/00b300/ffffff?text=Y" // Placeholder for the 'Y' icon
-          alt="ParkMobile Icon"
+          alt="Scan2Park Icon"
           className="h-10 w-10 rounded-md"
           onError={(e) => {
             e.currentTarget.src =
@@ -111,14 +111,14 @@ function InteractiveParkingSteps() {
               The smarter way to park
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              ParkMobile puts the power to park in your hands. Whether you’re
-              looking for a spot now or reserving a spot for later, ParkMobile
+              Scan2Park puts the power to park in your hands. Whether you’re
+              looking for a spot now or reserving a spot for later, Scan2Park
               has you covered.
             </p>
-            <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200 mb-4">
+            <button className="bg-[var(--primary)] hover:bg-[var(--primary)] text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200 mb-4">
               How it works
             </button>
-            <p className="text-green-600 hover:underline cursor-pointer text-sm font-medium">
+            <p className="text-[var(--primary)] hover:underline cursor-pointer text-sm font-medium">
               Learn how to reserve parking
             </p>
           </div>
@@ -130,7 +130,7 @@ function InteractiveParkingSteps() {
                 key={card.id}
                 className={`
                 flex flex-col items-center justify-between
-                bg-green-100 rounded-lg shadow-lg p-6
+                bg-[var(--secondary)] rounded-lg shadow-lg p-6
                 transition-all duration-500 ease-in-out
                 ${
                   activeCard === index
@@ -141,7 +141,7 @@ function InteractiveParkingSteps() {
                 cursor-pointer
                 border-2 ${
                   activeCard === index
-                    ? "border-green-500"
+                    ? "border-[var(--secondary)]"
                     : "border-transparent"
                 }
               `}
@@ -162,7 +162,7 @@ function InteractiveParkingSteps() {
                   {/* Number/Icon at the top */}
                   <div
                     className={`
-                  text-5xl font-bold text-green-700 mb-4
+                  text-5xl font-bold text-[var(--primary)] mb-4
                   ${activeCard === index ? "block" : "block"}
                 `}
                   >

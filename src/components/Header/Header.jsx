@@ -51,8 +51,8 @@ function Header() {
             {/* Using a placeholder for the logo. Replace with your actual image. */}
             <Link href="/">
               <img
-                src="https://placehold.co/150x40/000000/ffffff?text=ParkMobile"
-                alt="ParkMobile Logo"
+                src="https://placehold.co/150x40/2980b9/ffffff?text=Scan2Park"
+                alt="Scan2Park Logo"
                 className="h-10 rounded-md"
               />
             </Link>
@@ -62,19 +62,19 @@ function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <a
               href="/"
-              className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
+              className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
             >
               Home
             </a>
             <a
               href="/parking-locations"
-              className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
+              className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
             >
               Find A Parking Location
             </a>
             <a
               href="/about"
-              className="text-gray-700 hover:text-green-600 transition-colors duration-200 text-base font-medium rounded-md"
+              className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
             >
               About Us
             </a>
@@ -90,7 +90,7 @@ function Header() {
               <div className="w-[110px] flex justify-end">
                 <a
                   href="/"
-                  className="hover:underline hover:text-green-600"
+                  className="hover:underline hover:text-[var(--primary)]"
                   onClick={handleLogout}
                 >
                   Logout
@@ -100,14 +100,14 @@ function Header() {
               <div>
                 <a
                   href="/login"
-                  className="hover:underline hover:text-green-600 mr-2"
+                  className="hover:underline hover:text-[var(--primary)] mr-2"
                 >
                   Login
                 </a>
                 /
                 <a
                   href="/register"
-                  className="hover:underline hover:text-green-600 ml-2"
+                  className="hover:underline hover:text-[var(--primary)] ml-2"
                 >
                   Signup
                 </a>
@@ -115,7 +115,7 @@ function Header() {
             )}
             {/* Mobile Menu Button (Hamburger/Close Icon) */}
             <button
-              className="md:hidden p-2 text-gray-700 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-full transition-colors duration-200"
+              className="md:hidden p-2 text-gray-700 hover:text-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50 rounded-full transition-colors duration-200"
               onClick={toggleMobileMenu}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -134,25 +134,25 @@ function Header() {
             <nav className="flex flex-col items-center space-y-4">
               <a
                 href="#"
-                className="block text-gray-700 hover:text-green-600 transition-colors duration-200 text-lg font-medium py-2 w-full text-center rounded-md"
+                className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full text-center rounded-md"
               >
                 Ready to park now
               </a>
               <a
                 href="#"
-                className="block text-gray-700 hover:text-green-600 transition-colors duration-200 text-lg font-medium py-2 w-full text-center rounded-md"
+                className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full text-center rounded-md"
               >
                 Reserve parking for later
               </a>
               <a
                 href="#"
-                className="block text-gray-700 hover:text-green-600 transition-colors duration-200 text-lg font-medium py-2 w-full text-center rounded-md"
+                className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full text-center rounded-md"
               >
-                ParkMobile for Business
+                Scan2Park for Business
               </a>
               <a
                 href="#"
-                className="block text-gray-700 hover:text-green-600 transition-colors duration-200 text-lg font-medium py-2 w-full text-center rounded-md"
+                className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full text-center rounded-md"
               >
                 Solutions for parking providers
               </a>

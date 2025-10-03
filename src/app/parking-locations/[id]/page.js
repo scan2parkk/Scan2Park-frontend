@@ -118,14 +118,14 @@ function ParkingSlotDetailPage({ params }) {
         <main className="py-12">
           <button
             onClick={() => window.history.back()}
-            className="flex items-center text-green-700 hover:text-green-900 mb-6"
+            className="flex items-center text-[var(--primary)] hover:text-[var(--primary)] mb-6"
           >
             <ArrowLeft className="mr-2" /> Back to Locations
           </button>
 
           <h1 className="text-3xl font-bold mb-2">{location.name}</h1>
           <p className="flex items-center text-gray-600 mb-6">
-            <MapPin className="h-5 w-5 mr-2 text-green-600" />
+            <MapPin className="h-5 w-5 mr-2 text-[var(--primary)]" />
             {location.address || "Address not available"}
           </p>
 
@@ -148,8 +148,9 @@ function ParkingSlotDetailPage({ params }) {
                     <div
                       key={slot._id}
                       onClick={() => slot.isAvailable && handleBookSlot(slot)}
-                      className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${slot.isAvailable
-                          ? "bg-green-500 text-white hover:bg-green-600"
+                      className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${
+                        slot.isAvailable
+                          ? "bg-[var(--secondary)] text-white hover:bg-[var(--primary)]"
                           : "bg-gray-300 text-gray-800"
                         }`}
                       style={{
@@ -218,7 +219,7 @@ function ParkingSlotDetailPage({ params }) {
                     </button>
                     <button
                       type="submit"
-                      className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition"
+                      className="px-4 py-2 rounded-lg bg-[var(--primary)] text-white hover:bg-[var(--primary)] transition"
                       disabled={!bookingForm.startTime || !bookingForm.endTime}
                     >
                       Confirm Booking

@@ -129,7 +129,7 @@ const AdminParkingLotAllotment = ({ locationId }) => {
                   <span
                     className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                       item.status === "Available"
-                        ? "bg-green-100 text-green-800"
+                        ? "bg-[var(--secondary)] text-[var(--primary)]"
                         : "bg-red-100 text-red-800"
                     }`}
                   >

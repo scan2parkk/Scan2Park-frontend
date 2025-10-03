@@ -13,8 +13,8 @@ function ParkingStartingPointSection() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
             {/* Left Section - Text Content and Buttons */}
             <div className="w-full lg:w-1/2 text-center lg:text-left">
-              <p className="text-green-700 text-lg font-semibold mb-3">
-                About ParkMobile
+              <p className="text-[var(--primary)] text-lg font-semibold mb-3">
+                About Scan2Park
               </p>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
                 Because parking is just a starting point
@@ -26,18 +26,18 @@ function ParkingStartingPointSection() {
               </p>
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                 {/* See our recent news button */}
-                <button className="bg-white border-2 border-green-600 text-green-600 hover:bg-green-50 hover:text-green-700 font-semibold py-3 px-6 rounded-md shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                <button className="bg-white border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-green-50 hover:text-[var(--primary)] font-semibold py-3 px-6 rounded-md shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50">
                   See our recent news
                 </button>
 
                 {/* VIDEO: Smart mobility button with hover animation */}
                 <button
-                  className="relative bg-green-600 text-white font-semibold py-3 px-6 rounded-md shadow-md overflow-hidden group focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50"
+                  className="relative bg-[var(--primary)] text-white font-semibold py-3 px-6 rounded-md shadow-md overflow-hidden group focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50"
                   onMouseEnter={() => setIsVideoButtonHovered(true)}
                   onMouseLeave={() => setIsVideoButtonHovered(false)}
                 >
                   <span
-                    className={`absolute inset-0 bg-green-700 transition-transform duration-200 ease-out ${
+                    className={`absolute inset-0 bg-[var(--primary)] transition-transform duration-200 ease-out ${
                       isVideoButtonHovered
                         ? "translate-x-0"
                         : "-translate-x-full"
@@ -51,8 +51,8 @@ function ParkingStartingPointSection() {
             {/* Right Section - Image of Phone with Car */}
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
               <img
-                src="/images/About-ParkMobile-Parking-App.jpg" // Placeholder for phone and car image
-                alt="Phone displaying ParkMobile app with a car"
+                src="/images/About-Scan2Park-Parking-App.jpg" // Placeholder for phone and car image
+                alt="Phone displaying Scan2Park app with a car"
                 className="object-cover rounded-lg"
               />
             </div>

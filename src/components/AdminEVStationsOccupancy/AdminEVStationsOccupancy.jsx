@@ -8,7 +8,7 @@ const AdminEVStationsOccupancy = () => {
           key={i}
           xmlns="http://www.w3.org/2000/svg"
           className={`h-8 w-8 transition-colors ${
-            isOccupied ? "text-green-500" : "text-gray-300"
+            isOccupied ? "text-[var(--secondary)]" : "text-gray-300"
           }`}
           viewBox="0 0 20 20"
           fill="currentColor"

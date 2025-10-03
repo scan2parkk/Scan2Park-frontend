@@ -95,7 +95,7 @@ function ParkingLocationsPage() {
                       {location.name}
                     </h2>
                     <p className="text-gray-600 flex items-center mb-4 flex-grow">
-                      <MapPin className="h-5 w-5 text-green-600 mr-2" />
+                      <MapPin className="h-5 w-5 text-[var(--primary)] mr-2" />
                       {location.address || "Address not available"}
                     </p>
                     <button
@@ -108,7 +108,7 @@ function ParkingLocationsPage() {
                           router.push(`/parking-locations/${location._id}`);
                         }
                       }}
-                      className="mt-auto bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
+                      className="mt-auto bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
                     >
                       Book Now
                     </button>
@@ -130,8 +130,9 @@ function ParkingLocationsPage() {
               <button
                 key={i}
                 onClick={() => handlePageChange(i + 1)}
-                className={`px-4 py-2 rounded-md font-medium ${currentPage === i + 1
-                    ? "bg-green-600 text-white"
+                className={`px-4 py-2 rounded-md font-medium ${
+                  currentPage === i + 1
+                    ? "bg-[var(--primary)] text-white"
                     : "bg-white text-gray-700 hover:bg-gray-100"
                   }`}
               >

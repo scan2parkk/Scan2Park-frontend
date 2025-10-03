@@ -4,7 +4,7 @@ import React from "react";
 import { Play } from "lucide-react"; // Using lucide-react for the play icon
 import MaxWidthContainer from "../MaxWidthContainer";
 
-function WhatIsParkMobileSection() {
+function WhatIsScan2ParkSection() {
   return (
     <section className="bg-white">
       <MaxWidthContainer>
@@ -14,7 +14,7 @@ function WhatIsParkMobileSection() {
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
-                backgroundImage: `url('/images/ParkMobileImage.jpg')`, // Replace with your actual image URL
+                backgroundImage: `url('/images/Scan2ParkImage.jpg')`, // Replace with your actual image URL
                 //   backgroundBlendMode: "multiply",
                 //   backgroundColor: "rgba(0, 0, 0, 0.5)", // Dark overlay for text readability
               }}
@@ -26,18 +26,18 @@ function WhatIsParkMobileSection() {
             {/* Content */}
             <div className="relative z-10 p-8 md:p-16 flex flex-col items-start justify-center min-h-[300px] text-white">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                What is ParkMobile?
+                What is Scan2Park?
               </h2>
               <p className="text-base md:text-lg max-w-2xl mb-8">
-                ParkMobile helps millions of people easily find and pay for
-                parking on their mobile devices. People can use ParkMobile
+                Scan2Park helps millions of people easily find and pay for
+                parking on their mobile devices. People can use Scan2Park
                 solutions to quickly pay for street and garage parking without
-                having to use a meter or kiosk. Additionally, ParkMobile offers
+                having to use a meter or kiosk. Additionally, Scan2Park offers
                 parking reservations for concerts, sporting events, airports,
                 campuses and more. Watch the video below to see how we’re giving
                 people everywhere a smarter way to park.
               </p>
-              <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200 flex items-center gap-2 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50">
+              <button className="bg-[var(--primary)] hover:bg-[var(--primary)] text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200 flex items-center gap-2 focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50">
                 <Play className="h-5 w-5" fill="currentColor" />
                 See how it works
               </button>
@@ -49,4 +49,4 @@ function WhatIsParkMobileSection() {
   );
 }
 
-export default WhatIsParkMobileSection;
+export default WhatIsScan2ParkSection;

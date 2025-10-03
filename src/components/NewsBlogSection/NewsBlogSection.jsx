@@ -49,7 +49,7 @@ function NewsBlogSection() {
           {/* Section Heading */}
           <div className="flex items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mr-8">
-              ParkMobile news & blog
+              Scan2Park news & blog
             </h2>
             {/* Decorative lines (optional, adjust if needed) */}
             <div className="flex-grow border-t-2 border-gray-300 hidden md:block"></div>
@@ -95,7 +95,7 @@ function NewsBlogSection() {
 
           {/* See More Button */}
           <div className="text-center">
-            <button className="bg-white border-2 border-green-600 text-green-600 hover:bg-green-50 hover:text-green-700 font-semibold py-3 px-8 rounded-md shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+            <button className="bg-white border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-green-50 hover:text-[var(--primary)] font-semibold py-3 px-8 rounded-md shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50">
               See More
             </button>
           </div>

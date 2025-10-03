@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
-import Analytics from '@/components/admin/Analytics';
-import AddLocation from '@/components/admin/AddLocation';
-import BookingsList from '@/components/admin/BookingsList';
-import AddSlot from '@/components/admin/AddSlot';
-import UsersList from '@/components/admin/UsersList';
-import LocationsSlots from '@/components/admin/LocationsSlots';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import Analytics from "@/components/admin/Analytics";
+import AddLocation from "@/components/admin/AddLocation";
+import BookingsList from "@/components/admin/BookingsList";
+import AddSlot from "@/components/admin/AddSlot";
+import UsersList from "@/components/admin/UsersList";
+import LocationsSlots from "@/components/admin/LocationsSlots";
 // import Analytics from '../components/admin/Analytics';
 // import AddLocation from '../components/admin/AddLocation';
 // import AddSlot from '../components/admin/AddSlot';
@@ -28,39 +28,44 @@ export default function AdminDashboard() {
     totalSlots: 0,
     totalBookings: 0,
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const router = useRouter();
 
   // Check if user is admin
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
-      router.push('/login');
+      router.push("/login");
       return;
     }
     try {
       const decoded = jwtDecode(token);
-      if (decoded.role !== 'admin') {
-        router.push('/login');
+      if (decoded.role !== "admin") {
+        router.push("/login");
       }
     } catch (err) {
-      router.push('/login');
+      router.push("/login");
     }
   }, [router]);
 
   // Fetch data
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const fetchData = async () => {
       try {
         // Fetch users
-        const usersRes = await axios.get('https://smart-parking-backend-asyg.onrender.com/api/admin/users', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const usersRes = await axios.get(
+          "http://localhost:5000/api/admin/users",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setUsers(usersRes.data);
 
         // Fetch locations
-        const locationsRes = await axios.get('https://smart-parking-backend-asyg.onrender.com/api/parking/locations');
+        const locationsRes = await axios.get(
+          "http://localhost:5000/api/parking/locations"
+        );
         setLocations(locationsRes.data);
 
         // Fetch slots for each location
@@ -75,20 +80,26 @@ export default function AdminDashboard() {
         setSlots(slotsData);
 
         // Fetch bookings
-        const bookingsRes = await axios.get('https://smart-parking-backend-asyg.onrender.com/api/admin/bookings', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const bookingsRes = await axios.get(
+          "http://localhost:5000/api/admin/bookings",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setBookings(bookingsRes.data);
 
         // Set analytics
         setAnalytics({
           totalUsers: usersRes.data.length,
           totalLocations: locationsRes.data.length,
-          totalSlots: Object.values(slotsData).reduce((sum, slots) => sum + slots.length, 0),
+          totalSlots: Object.values(slotsData).reduce(
+            (sum, slots) => sum + slots.length,
+            0
+          ),
           totalBookings: bookingsRes.data.length,
         });
       } catch (err) {
-        setError(err.response?.data?.message || 'Failed to fetch data');
+        setError(err.response?.data?.message || "Failed to fetch data");
       }
     };
     fetchData();
@@ -97,7 +108,10 @@ export default function AdminDashboard() {
   // Handlers for updating state
   const handleLocationAdded = (newLocation) => {
     setLocations([...locations, newLocation]);
-    setAnalytics((prev) => ({ ...prev, totalLocations: prev.totalLocations + 1 }));
+    setAnalytics((prev) => ({
+      ...prev,
+      totalLocations: prev.totalLocations + 1,
+    }));
   };
 
   const handleSlotAdded = (newSlot) => {
@@ -115,7 +129,10 @@ export default function AdminDashboard() {
 
   const handleBookingDeleted = (bookingId) => {
     setBookings(bookings.filter((booking) => booking._id !== bookingId));
-    setAnalytics((prev) => ({ ...prev, totalBookings: prev.totalBookings - 1 }));
+    setAnalytics((prev) => ({
+      ...prev,
+      totalBookings: prev.totalBookings - 1,
+    }));
   };
 
   return (
@@ -129,7 +146,10 @@ export default function AdminDashboard() {
         <AddSlot locations={locations} onSlotAdded={handleSlotAdded} />
         <UsersList users={users} onUserDeleted={handleUserDeleted} />
         <LocationsSlots locations={locations} slots={slots} />
-        <BookingsList bookings={bookings} onBookingDeleted={handleBookingDeleted} />
+        <BookingsList
+          bookings={bookings}
+          onBookingDeleted={handleBookingDeleted}
+        />
       </div>
     </div>
   );

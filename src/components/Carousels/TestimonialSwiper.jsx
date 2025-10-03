@@ -15,7 +15,7 @@ function TestimonialSwiper() {
     },
     {
       id: 2,
-      quote: "ParkMobile makes parking a breeze. Highly recommend!",
+      quote: "Scan2Park makes parking a breeze. Highly recommend!",
       author: "John D.",
     },
     {
@@ -51,11 +51,11 @@ function TestimonialSwiper() {
     <section className="bg-white py-5">
       <MaxWidthContainer>
         <div className="container mx-auto">
-          <div className="relative bg-green-100 rounded-lg p-8 md:p-12 flex items-center justify-center shadow-xl min-h-[200px] overflow-hidden">
+          <div className="relative bg-[var(--secondary)] rounded-lg p-8 md:p-12 flex items-center justify-center shadow-xl min-h-[200px] overflow-hidden">
             {/* Previous Button */}
             <button
               onClick={goToPrevious}
-              className="absolute left-4 md:left-8 bg-white text-green-700 p-3 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-200 z-10"
+              className="absolute left-4 md:left-8 bg-white text-[var(--primary)] p-3 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50 transition-colors duration-200 z-10"
               aria-label="Previous testimonial"
             >
               <ArrowLeft className="h-6 w-6" />
@@ -85,7 +85,7 @@ function TestimonialSwiper() {
             {/* Next Button */}
             <button
               onClick={goToNext}
-              className="absolute right-4 md:right-8 bg-white text-green-700 p-3 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-200 z-10"
+              className="absolute right-4 md:right-8 bg-white text-[var(--primary)] p-3 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50 transition-colors duration-200 z-10"
               aria-label="Next testimonial"
             >
               <ArrowRight className="h-6 w-6" />
@@ -99,7 +99,9 @@ function TestimonialSwiper() {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`h-3 w-3 rounded-full transition-all duration-200 ${
-                  currentIndex === index ? "bg-green-600 w-6" : "bg-gray-300"
+                  currentIndex === index
+                    ? "bg-[var(--primary)] w-6"
+                    : "bg-gray-300"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               ></button>

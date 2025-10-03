@@ -3,7 +3,7 @@
 import React from "react";
 import MaxWidthContainer from "../MaxWidthContainer";
 
-const ParkMobileBusinessSection = ({
+const Scan2ParkBusinessSection = ({
   title,
   description,
   imageUrl,
@@ -39,7 +39,7 @@ const ParkMobileBusinessSection = ({
               </p>
               <a
                 href={buttonLink}
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200 w-full md:w-auto mx-auto md:mx-0"
+                className="bg-[var(--primary)] hover:bg-[var(--primary)] text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200 w-full md:w-auto mx-auto md:mx-0"
               >
                 {buttonText}
               </a>
@@ -51,4 +51,4 @@ const ParkMobileBusinessSection = ({
   );
 };
 
-export default ParkMobileBusinessSection;
+export default Scan2ParkBusinessSection;

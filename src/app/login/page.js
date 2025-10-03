@@ -108,7 +108,7 @@ export default function Login() {
         <span className="text-gray-700">Enter email and password</span>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success && (
-          <p className="text-green-500 text-center mb-4">{success}</p>
+          <p className="text-[var(--secondary)] text-center mb-4">{success}</p>
         )}
         <form onSubmit={onSubmit} className="mt-3">
           <div className="mb-4">
@@ -120,7 +120,7 @@ export default function Login() {
               name="email"
               value={email}
               onChange={onChange}
-              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
@@ -133,13 +133,13 @@ export default function Login() {
               name="password"
               value={password}
               onChange={onChange}
-              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
+            className="w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
           >
             Login
           </button>
@@ -148,7 +148,7 @@ export default function Login() {
           <span className="text-gray-700">Don&apos;t have an account?</span>
           <Link
             href="/register"
-            className="text-green-600 hover:text-green-700 hover:underline"
+            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Sign up here
           </Link>

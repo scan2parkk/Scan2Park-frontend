@@ -33,9 +33,9 @@ function PayForParkingSection() {
                 <p className="text-base md:text-lg mb-6">
                   No change? Quickly pay for on-street parking right from your
                   mobile device. Watch the video to learn how simple parking
-                  with ParkMobile can be.
+                  with Scan2Park can be.
                 </p>
-                <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200">
+                <button className="bg-[var(--primary)] hover:bg-[var(--primary)] text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200">
                   Learn more
                 </button>
               </div>
@@ -43,7 +43,7 @@ function PayForParkingSection() {
               {/* Right Content - Play Button */}
               <div className="flex-shrink-0">
                 <button
-                  className="bg-green-600 hover:bg-green-700 text-white p-6 rounded-full shadow-lg transition-colors duration-200 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50"
+                  className="bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-6 rounded-full shadow-lg transition-colors duration-200 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50"
                   aria-label="Play video"
                 >
                   <Play className="h-12 w-12" fill="currentColor" />{" "}

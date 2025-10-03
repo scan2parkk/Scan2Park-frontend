@@ -33,17 +33,17 @@ function ParkingByCitySection() {
                 Parking by city
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                ParkMobile is making parking easier in over 4,000 locations
+                Scan2Park is making parking easier in over 4,000 locations
                 across all major cities in North America.
               </p>
               <div className="flex w-full max-w-md mx-auto lg:mx-0 mb-6">
                 <input
                   type="text"
                   placeholder="Search by Location or Venue"
-                  className="flex-grow p-3 rounded-l-md border border-gray-300 focus:ring-2 focus:ring-green-500 focus:outline-none text-gray-800"
+                  className="flex-grow p-3 rounded-l-md border border-gray-300 focus:ring-2 focus:ring-[var(--secondary)] focus:outline-none text-gray-800"
                 />
                 <button
-                  className="bg-green-600 hover:bg-green-700 text-white p-3 rounded-r-md shadow-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                  className="bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-3 rounded-r-md shadow-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50"
                   aria-label="Search"
                 >
                   <Search className="h-6 w-6" />
@@ -52,12 +52,12 @@ function ParkingByCitySection() {
 
               {/* View Locations Button with Hover Animation */}
               <button
-                className="relative bg-green-600 text-white font-semibold py-3 px-8 rounded-md shadow-lg overflow-hidden group focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50"
+                className="relative bg-[var(--primary)] text-white font-semibold py-3 px-8 rounded-md shadow-lg overflow-hidden group focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50"
                 onMouseEnter={() => setIsButtonHovered(true)}
                 onMouseLeave={() => setIsButtonHovered(false)}
               >
                 <span
-                  className={`absolute inset-0 bg-green-700 transition-transform duration-200 ease-out ${
+                  className={`absolute inset-0 bg-[var(--primary)] transition-transform duration-200 ease-out ${
                     isButtonHovered ? "translate-x-0" : "-translate-x-full"
                   }`}
                 ></span>
@@ -98,7 +98,7 @@ function ParkingByCitySection() {
                       </h4>
                       <div className="relative h-0.5 bg-black overflow-hidden">
                         <span
-                          className={`absolute inset-0 bg-green-600 transition-transform duration-200 ease-out ${
+                          className={`absolute inset-0 bg-[var(--primary)] transition-transform duration-200 ease-out ${
                             hoveredCity === city.id
                               ? "translate-x-0"
                               : "-translate-x-full"
