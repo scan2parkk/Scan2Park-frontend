@@ -26,7 +26,7 @@ const AdminParkingOccupancy = () => {
     const fetchLocations = async () => {
       try {
         const res = await axios.get(
-          "https://scan2park-backend.onrender.com/api/parking/locations",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/locations`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

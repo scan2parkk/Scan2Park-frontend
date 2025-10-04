@@ -24,7 +24,7 @@ const AdminParkingLotAllotment = ({ locationId }) => {
       try {
         // Fetch all locations to get the name
         const locationsRes = await axios.get(
-          "https://scan2park-backend.onrender.com/api/parking/locations",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/locations`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -36,7 +36,9 @@ const AdminParkingLotAllotment = ({ locationId }) => {
 
         // Fetch slots for the specific locationId
         const slotsRes = await axios.get(
-          `https://scan2park-backend.onrender.com/api/parking/slots/${locationId}`,
+          `${
+            process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000"
+          }/api/parking/slots/${locationId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -129,7 +131,7 @@ const AdminParkingLotAllotment = ({ locationId }) => {
                   <span
                     className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                       item.status === "Available"
-                        ? "bg-green-100 text-green-800"
+                        ? "bg-[var(--secondary)] text-[var(--primary)]"
                         : "bg-red-100 text-red-800"
                     }`}
                   >

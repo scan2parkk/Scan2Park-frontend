@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import {jwtDecode} from 'jwt-decode';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,7 +11,7 @@ export default function Header() {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       try {
         const decoded = jwtDecode(token);
@@ -25,31 +25,41 @@ export default function Header() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
     setUserRole(null);
-    router.push('/login');
+    router.push("/login");
   };
 
   return (
-    <header className="bg-blue-600 text-white p-4 shadow-md">
+    <header className="bg-[var(--primary)] text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold">
           <Link href="/">Smart Parking</Link>
         </h1>
         <nav className="flex space-x-4">
-          <Link href="/" className="hover:text-gray-200">Home</Link>
+          <Link href="/" className="hover:text-gray-200">
+            Home
+          </Link>
           {!isLoggedIn && (
             <>
-              <Link href="/register" className="hover:text-gray-200">Register</Link>
-              <Link href="/login" className="hover:text-gray-200">Login</Link>
+              <Link href="/register" className="hover:text-gray-200">
+                Register
+              </Link>
+              <Link href="/login" className="hover:text-gray-200">
+                Login
+              </Link>
             </>
           )}
           {isLoggedIn && (
             <>
-              <Link href="/dashboard" className="hover:text-gray-200">Dashboard</Link>
-              {userRole === 'admin' && (
-                <Link href="/admin" className="hover:text-gray-200">Admin Panel</Link>
+              <Link href="/dashboard" className="hover:text-gray-200">
+                Dashboard
+              </Link>
+              {userRole === "admin" && (
+                <Link href="/admin" className="hover:text-gray-200">
+                  Admin Panel
+                </Link>
               )}
               <button
                 onClick={handleLogout}

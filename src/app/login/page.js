@@ -39,7 +39,7 @@ export default function Login() {
     setError("");
     setSuccess("");
     try {
-      const res = await axios.post("https://scan2park-backend.onrender.com/api/auth/login", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/auth/login`, {
         email,
         password,
       });
@@ -47,7 +47,7 @@ export default function Login() {
       setSuccess("Login successful! Redirecting...");
       // Fetch user profile to check role
       const profileRes = await axios.get(
-        "https://scan2park-backend.onrender.com/api/user/profile",
+        `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/profile`,
         {
           headers: { Authorization: `Bearer ${res.data.token}` },
         }
@@ -72,7 +72,7 @@ export default function Login() {
       const checkAuth = async () => {
         try {
           const profileRes = await axios.get(
-            "https://scan2park-backend.onrender.com/api/user/profile",
+            `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/profile`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -95,8 +95,8 @@ export default function Login() {
   }, [router]);
 
   return (
-    <div className="min-h-screen flex gap-50 items-center justify-center bg-gray-100">
-      <div className="">
+    <div className="min-h-screen flex max-md:flex-col gap-50 items-center justify-center bg-gray-100">
+      <div className="max-md:hidden">
         <img
           src="/images/Groupsigninimage.svg"
           alt="Sign in image"
@@ -108,7 +108,7 @@ export default function Login() {
         <span className="text-gray-700">Enter email and password</span>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success && (
-          <p className="text-green-500 text-center mb-4">{success}</p>
+          <p className="text-[var(--secondary)] text-center mb-4">{success}</p>
         )}
         <form onSubmit={onSubmit} className="mt-3">
           <div className="mb-4">
@@ -120,7 +120,7 @@ export default function Login() {
               name="email"
               value={email}
               onChange={onChange}
-              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
@@ -133,24 +133,30 @@ export default function Login() {
               name="password"
               value={password}
               onChange={onChange}
-              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
+            className="w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
           >
             Login
           </button>
         </form>
-        <p className="flex gap-2 text-left mt-4">
-          <span className="text-gray-700">Don&apos;t have an account?</span>
+        <p className="flex flex-wrap justify-between gap-2 text-left mt-4">
+          <span className="text-gray-700">Don&apos;t have an account/need verification?</span>
           <Link
             href="/register"
-            className="text-green-600 hover:text-green-700 hover:underline"
+            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Sign up here
+          </Link>
+          <Link
+            href="/verify-otp"
+            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
+          >
+            Verify-Otp
           </Link>
         </p>
       </div>
