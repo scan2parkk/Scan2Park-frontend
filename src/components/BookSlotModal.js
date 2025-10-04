@@ -27,7 +27,7 @@ export default function BookSlotModal({
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/parking/book",
+        `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/book`,
         { locationId, slotId, ...formData },
         { headers: { Authorization: `Bearer ${token}` } }
       );

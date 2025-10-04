@@ -20,7 +20,7 @@ function ParkingLocationsPage() {
     const fetchLocations = async () => {
       try {
         const res = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/parking/locations"
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/locations`
         );
         setParkingLocationsData(res.data);
       } catch (err) {

@@ -24,7 +24,7 @@ export default function ParkingLocationById({ params }) {
 
         // Fetch user profile
         const profileRes = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/profile`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -38,7 +38,7 @@ export default function ParkingLocationById({ params }) {
         }
 
         const locationsRes = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/parking/locations",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/locations`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -48,7 +48,7 @@ export default function ParkingLocationById({ params }) {
         setLocation(foundLocation);
 
         const slotsRes = await axios.get(
-          `https://smart-parking-backend-asyg.onrender.com/api/parking/slots/${id}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/slots/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

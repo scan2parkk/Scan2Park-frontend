@@ -21,7 +21,7 @@ export default function Dashboard() {
 
         // Fetch user profile
         const profileRes = await axios.get(
-          "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/profile`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

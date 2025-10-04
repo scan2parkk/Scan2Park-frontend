@@ -39,7 +39,7 @@ export default function Login() {
     setError("");
     setSuccess("");
     try {
-      const res = await axios.post("https://smart-parking-backend-asyg.onrender.com/api/auth/login", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/auth/login`, {
         email,
         password,
       });
@@ -47,7 +47,7 @@ export default function Login() {
       setSuccess("Login successful! Redirecting...");
       // Fetch user profile to check role
       const profileRes = await axios.get(
-        "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
+        `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/profile`,
         {
           headers: { Authorization: `Bearer ${res.data.token}` },
         }
@@ -72,7 +72,7 @@ export default function Login() {
       const checkAuth = async () => {
         try {
           const profileRes = await axios.get(
-            "https://smart-parking-backend-asyg.onrender.com/api/user/profile",
+            `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/profile`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -144,13 +144,19 @@ export default function Login() {
             Login
           </button>
         </form>
-        <p className="flex gap-2 text-left mt-4">
-          <span className="text-gray-700">Don&apos;t have an account?</span>
+        <p className="flex flex-wrap justify-between gap-2 text-left mt-4">
+          <span className="text-gray-700">Don&apos;t have an account/need verification?</span>
           <Link
             href="/register"
             className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Sign up here
+          </Link>
+          <Link
+            href="/verify-otp"
+            className="text-green-600 hover:text-green-700 hover:underline"
+          >
+            Verify-Otp
           </Link>
         </p>
       </div>
