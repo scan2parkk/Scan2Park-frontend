@@ -1,37 +1,43 @@
 "use client";
 
-import { useState } from 'react';
-import axios from 'axios';
+import { useState } from "react";
+import axios from "axios";
 
-export default function BookSlotModal({ isOpen, onClose, locationId, slotId, onBookingSuccess }) {
+export default function BookSlotModal({
+  isOpen,
+  onClose,
+  locationId,
+  slotId,
+  onBookingSuccess,
+}) {
   const [formData, setFormData] = useState({
-    startTime: '',
-    endTime: '',
+    startTime: "",
+    endTime: "",
   });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/book`,
         { locationId, slotId, ...formData },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      setSuccess('Slot booked successfully!');
+      setSuccess("Slot booked successfully!");
       setTimeout(() => {
         onBookingSuccess();
         onClose();
       }, 1000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to book slot');
+      setError(err.response?.data?.message || "Failed to book slot");
     }
   };
 
@@ -42,7 +48,9 @@ export default function BookSlotModal({ isOpen, onClose, locationId, slotId, onB
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <h3 className="text-xl font-semibold mb-4">Book Slot</h3>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {success && <p className="text-green-500 text-center mb-4">{success}</p>}
+        {success && (
+          <p className="text-[var(--secondary)] text-center mb-4">{success}</p>
+        )}
         <form onSubmit={onSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 mb-2" htmlFor="startTime">
@@ -53,7 +61,7 @@ export default function BookSlotModal({ isOpen, onClose, locationId, slotId, onB
               name="startTime"
               value={formData.startTime}
               onChange={onChange}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
@@ -66,7 +74,7 @@ export default function BookSlotModal({ isOpen, onClose, locationId, slotId, onB
               name="endTime"
               value={formData.endTime}
               onChange={onChange}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
@@ -80,7 +88,7 @@ export default function BookSlotModal({ isOpen, onClose, locationId, slotId, onB
             </button>
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              className="bg-[var(--primary)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary)]"
             >
               Book Slot
             </button>

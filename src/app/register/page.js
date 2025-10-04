@@ -177,8 +177,8 @@ export default function Register() {
 
 
   return (
-    <div className="min-h-screen gap-4 flex items-center justify-center bg-gray-100">
-      <div className="">
+    <div className="min-h-screen gap-4 flex max-md:flex-col items-center justify-center bg-gray-100">
+      <div className="max-md:hidden">
         <img
           src="/images/Frame-427320611.svg"
           alt="Sign in image"
@@ -195,7 +195,7 @@ export default function Register() {
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success && (
-          <p className="text-green-500 text-center mb-4">{success}</p>
+          <p className="text-[var(--secondary)] text-center mb-4">{success}</p>
         )}
 
         {/* Registration Form */}
@@ -209,7 +209,7 @@ export default function Register() {
               name="name"
               value={name}
               onChange={onChange}
-              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
@@ -222,7 +222,7 @@ export default function Register() {
               name="email"
               value={email}
               onChange={onChange}
-              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
@@ -235,7 +235,7 @@ export default function Register() {
               name="password"
               value={password}
               onChange={onChange}
-              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
             />
           </div>
@@ -247,7 +247,7 @@ export default function Register() {
               name="role"
               value={role}
               onChange={onChange}
-              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border-0 shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             >
               <option value="user">User</option>
               <option value="admin">Admin</option>
@@ -255,7 +255,7 @@ export default function Register() {
           </div>
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
+            className="w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
           >
             Sign up
           </button>
@@ -266,13 +266,13 @@ export default function Register() {
           <div className="flex justify-between">
             <Link
               href="/login"
-              className="text-green-600 hover:text-green-700 hover:underline"
+              className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
             >
               Login
             </Link>
             <Link
               href="/verify-otp"
-              className="text-green-600 hover:text-green-700 hover:underline"
+              className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
             >
               Verify-otp
             </Link>

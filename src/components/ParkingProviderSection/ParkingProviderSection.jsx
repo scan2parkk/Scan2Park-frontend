@@ -12,7 +12,7 @@ function ParkingProviderSection() {
       <MaxWidthContainer>
         <div className="container mx-auto">
           <div
-            className="bg-green-700 text-white rounded-lg p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl cursor-pointer"
+            className="bg-[var(--primary)] text-white rounded-lg p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl cursor-pointer"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -23,7 +23,7 @@ function ParkingProviderSection() {
               </h2>
               <p className="text-base md:text-lg opacity-90">
                 Whether you’ve got a garage to fill, you’re managing parking for
-                a big event, or you’re managing a large fleet, ParkMobile
+                a big event, or you’re managing a large fleet, Scan2Park
                 solutions can help.
               </p>
             </div>
@@ -34,12 +34,12 @@ function ParkingProviderSection() {
                 isHovered ? "translate-x-5" : "translate-x-0"
               }`}
             >
-              <button
-                className={`bg-white text-green-700 p-4 rounded-md shadow-lg flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 transition-transform duration-400 ease-out`}
+              {/* <button
+                className={`bg-white text-[var(--primary)] p-4 rounded-md shadow-lg flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50 transition-transform duration-400 ease-out`}
                 aria-label="Learn more about parking solutions"
               >
                 <ArrowRight className={`h-8 w-8`} />
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

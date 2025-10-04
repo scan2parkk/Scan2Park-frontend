@@ -4,6 +4,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --breakpoint-medium: 1440px;
+  --primary: #2980b9;
+  --secondary: #0093d0;
 }
 
 @theme inline {

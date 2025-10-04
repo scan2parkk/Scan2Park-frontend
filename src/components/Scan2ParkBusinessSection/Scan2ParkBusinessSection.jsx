@@ -3,7 +3,7 @@
 import React from "react";
 import MaxWidthContainer from "../MaxWidthContainer";
 
-const ParkMobileBusinessSection = ({
+const Scan2ParkBusinessSection = ({
   title,
   description,
   imageUrl,
@@ -14,11 +14,11 @@ const ParkMobileBusinessSection = ({
   return (
     <section className="bg-white py-5">
       <MaxWidthContainer>
-        <div className="container mx-auto">
+        {/* <div className="container mx-auto"> */}
           <div
             className={`flex flex-col ${
               reverse ? "md:flex-row-reverse" : "md:flex-row"
-            } items-center justify-center gap-8 md:gap-16 max-w-6xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden p-6 md:p-0`}
+            } items-center justify-center gap-8 md:gap-16 mx-auto bg-white rounded-lg border border-gray-300 overflow-hidden p-6 md:p-0 max-h-[400px]`}
           >
             {/* Image Section */}
             <div className="flex-shrink-0 w-full md:w-1/2">
@@ -39,16 +39,16 @@ const ParkMobileBusinessSection = ({
               </p>
               <a
                 href={buttonLink}
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200 w-full md:w-auto mx-auto md:mx-0"
+                className="bg-[var(--primary)] hover:bg-[var(--primary)] text-white font-semibold py-3 px-6 rounded-md shadow-lg transition-colors duration-200 w-full md:w-auto mx-auto md:mx-0"
               >
                 {buttonText}
               </a>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </MaxWidthContainer>
     </section>
   );
 };
 
-export default ParkMobileBusinessSection;
+export default Scan2ParkBusinessSection;

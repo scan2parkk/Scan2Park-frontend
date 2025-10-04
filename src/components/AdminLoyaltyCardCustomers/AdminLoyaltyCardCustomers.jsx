@@ -21,7 +21,9 @@ const AdminLoyaltyCardCustomers = () => {
             </div>
             <div
               className={`font-medium ${
-                customer.status === "Active" ? "text-green-500" : "text-red-500"
+                customer.status === "Active"
+                  ? "text-[var(--secondary)]"
+                  : "text-red-500"
               }`}
             >
               {customer.status}
