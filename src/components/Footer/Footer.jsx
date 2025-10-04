@@ -75,125 +75,46 @@ function Footer() {
                   About Scan2Park
                 </a>
               </li>
-              <li>
-                <a
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-                >
-                  Team
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-                >
-                  Newsroom
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-                >
-                  Scan2Park Cares
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/parking-locations"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-                >
-                  Parking near you
-                </a>
-              </li>
+              
+             
             </ul>
           </div>
 
           {/* Locations Section */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Locations</h3>
-            <div className="grid grid-cols-2 gap-y-2">
+            <div className="grid grid-cols-1 gap-2">
               <a
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                Atlanta
+                noida
               </a>
               <a
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                Milwaukee
+                gurugram
               </a>
               <a
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                Boston
+                Patiala
               </a>
               <a
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                Denver
+                Hydrabaad
               </a>
               <a
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                Washington DC
+                Bathinda
               </a>
-              <a
-                href="/parking-locations"
-                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                Baltimore
-              </a>
-              <a
-                href="/parking-locations"
-                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                Nashville
-              </a>
-              <a
-                href="/parking-locations"
-                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                Kansas City
-              </a>
-              <a
-                href="/parking-locations"
-                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                San Francisco
-              </a>
-              <a
-                href="/parking-locations"
-                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                Oakland
-              </a>
-              <a
-                href="/parking-locations"
-                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                Chicago
-              </a>
-              <a
-                href="/parking-locations"
-                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-              >
-                More...
-              </a>
+              
             </div>
           </div>
 

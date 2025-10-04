@@ -9,8 +9,8 @@ function ParkingStartingPointSection() {
   return (
     <section className="bg-white">
       <MaxWidthContainer>
-        <div className="container mx-auto">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
+        {/* <div className="container mx-auto"> */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mx-auto">
             {/* Left Section - Text Content and Buttons */}
             <div className="w-full lg:w-1/2 text-center lg:text-left">
               <p className="text-[var(--primary)] text-lg font-semibold mb-3">
@@ -21,7 +21,7 @@ function ParkingStartingPointSection() {
               </h2>
               <p className="text-lg text-gray-600 mb-8">
                 At the start, we just wanted to make parking easier. Today,
-                we’re the leading provider of parking solutions in the U.S. and
+                we’re the leading provider of parking solutions in the India and
                 it’s our mission to make cities more livable.
               </p>
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
@@ -31,20 +31,7 @@ function ParkingStartingPointSection() {
                 </button>
 
                 {/* VIDEO: Smart mobility button with hover animation */}
-                <button
-                  className="relative bg-[var(--primary)] text-white font-semibold py-3 px-6 rounded-md shadow-md overflow-hidden group focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50"
-                  onMouseEnter={() => setIsVideoButtonHovered(true)}
-                  onMouseLeave={() => setIsVideoButtonHovered(false)}
-                >
-                  <span
-                    className={`absolute inset-0 bg-[var(--primary)] transition-transform duration-200 ease-out ${
-                      isVideoButtonHovered
-                        ? "translate-x-0"
-                        : "-translate-x-full"
-                    }`}
-                  ></span>
-                  <span className="relative z-10">VIDEO: Smart mobility</span>
-                </button>
+               
               </div>
             </div>
 
@@ -57,7 +44,7 @@ function ParkingStartingPointSection() {
               />
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </MaxWidthContainer>
     </section>
   );

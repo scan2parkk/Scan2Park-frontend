@@ -14,11 +14,11 @@ const Scan2ParkBusinessSection = ({
   return (
     <section className="bg-white py-5">
       <MaxWidthContainer>
-        <div className="container mx-auto">
+        {/* <div className="container mx-auto"> */}
           <div
             className={`flex flex-col ${
               reverse ? "md:flex-row-reverse" : "md:flex-row"
-            } items-center justify-center gap-8 md:gap-16 max-w-6xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden p-6 md:p-0`}
+            } items-center justify-center gap-8 md:gap-16 mx-auto bg-white rounded-lg border border-gray-300 overflow-hidden p-6 md:p-0 max-h-[400px]`}
           >
             {/* Image Section */}
             <div className="flex-shrink-0 w-full md:w-1/2">
@@ -45,7 +45,7 @@ const Scan2ParkBusinessSection = ({
               </a>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </MaxWidthContainer>
     </section>
   );

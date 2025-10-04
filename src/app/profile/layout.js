@@ -21,12 +21,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+       <body
+        className={`
+          ${geistSans.variable} ${geistMono.variable} 
+          relative min-h-screen
+        `}
+        style={{
+          backgroundImage: "url('/images/pexels-francis-desjardins-1613813-5932513.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+        }}
       >
-        <Header />
-        {children}
-        <Footer />
+        <div className="absolute inset-0 bg-black/20 z-10" />
+        <div className="relative z-10">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

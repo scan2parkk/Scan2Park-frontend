@@ -177,8 +177,8 @@ export default function Register() {
 
 
   return (
-    <div className="min-h-screen gap-4 flex items-center justify-center bg-gray-100">
-      <div className="">
+    <div className="min-h-screen gap-4 flex max-md:flex-col items-center justify-center bg-gray-100">
+      <div className="max-md:hidden">
         <img
           src="/images/Frame-427320611.svg"
           alt="Sign in image"
@@ -266,13 +266,13 @@ export default function Register() {
           <div className="flex justify-between">
             <Link
               href="/login"
-              className="text-green-600 hover:text-green-700 hover:underline"
+              className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
             >
               Login
             </Link>
             <Link
               href="/verify-otp"
-              className="text-green-600 hover:text-green-700 hover:underline"
+              className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
             >
               Verify-otp
             </Link>

@@ -34,12 +34,12 @@ function ParkingProviderSection() {
                 isHovered ? "translate-x-5" : "translate-x-0"
               }`}
             >
-              <button
+              {/* <button
                 className={`bg-white text-[var(--primary)] p-4 rounded-md shadow-lg flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50 transition-transform duration-400 ease-out`}
                 aria-label="Learn more about parking solutions"
               >
                 <ArrowRight className={`h-8 w-8`} />
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

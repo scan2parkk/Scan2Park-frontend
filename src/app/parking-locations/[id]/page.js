@@ -101,7 +101,7 @@ function ParkingSlotDetailPage({ params }) {
   };
 
   if (isLoading) {
-    return <div className="text-center p-10">Loading...</div>;
+    return <div className="text-center p-10 flex justify-center items-center min-h-screen text-white">Loading...</div>;
   }
 
   if (error) {
@@ -113,28 +113,31 @@ function ParkingSlotDetailPage({ params }) {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className=" min-h-screen">
       <MaxWidthContainer>
         <main className="py-12">
           <button
             onClick={() => window.history.back()}
-            className="flex items-center text-[var(--primary)] hover:text-[var(--primary)] mb-6"
+            className="flex items-center text-white hover:text-white mb-6"
           >
             <ArrowLeft className="mr-2" /> Back to Locations
           </button>
-
-          <h1 className="text-3xl font-bold mb-2">{location.name}</h1>
-          <p className="flex items-center text-gray-600 mb-6">
-            <MapPin className="h-5 w-5 mr-2 text-[var(--primary)]" />
-            {location.address || "Address not available"}
-          </p>
+          <div className="flex flex-col items-start md:items-center mb-8 ">
+            <h1 className="text-3xl text-white font-bold mb-2 capitalize">{location.name}</h1>
+            <p className="flex items-center text-white mb-6">
+              <MapPin className="h-5 w-5 mr-2 text-white" />
+              {location.address || "Address not available"}
+            </p>
+          </div>
 
           {/* Parking Slots Grid */}
-          <div className="bg-white p-6 rounded-lg shadow mb-8">
-            <h2 className="text-2xl font-semibold mb-4">Parking Slots</h2>
-            <p className="mb-4 text-gray-500">
-              Click to book an available slot
-            </p>
+          <div className="bg-white/50 p-6 rounded-lg shadow mb-8">
+            <div className="flex max-md:flex-col gap-4 items-center mb-4 md:gap-10">
+              <h2 className="text-2xl font-semibold mb-4">Parking Slots</h2>
+              <p className="mb-4 text-black">
+                Click to book an available slot
+              </p>
+            </div>
             {slots.length > 0 ? (
               <div className="flex flex-wrap gap-2">
                 {slots
@@ -148,10 +151,9 @@ function ParkingSlotDetailPage({ params }) {
                     <div
                       key={slot._id}
                       onClick={() => slot.isAvailable && handleBookSlot(slot)}
-                      className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${
-                        slot.isAvailable
-                          ? "bg-[var(--secondary)] text-white hover:bg-[var(--primary)]"
-                          : "bg-gray-300 text-gray-800"
+                      className={`w-10 h-10 md:w-20 md:h-20 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${slot.isAvailable
+                        ? "bg-[var(--secondary)] text-white hover:bg-[var(--primary)] cursor-pointer"
+                        : "bg-red-600 text-white cursor-not-allowed opacity-50"
                         }`}
                       style={{
                         pointerEvents: slot.isAvailable ? "auto" : "none",
@@ -167,12 +169,12 @@ function ParkingSlotDetailPage({ params }) {
             )}
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow">
+          {/* <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-2xl font-semibold mb-2">About this Location</h2>
             <p className="text-gray-700">
               {location.description || "No description available"}
             </p>
-          </div>
+          </div> */}
 
           {isModalOpen && (
             <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">

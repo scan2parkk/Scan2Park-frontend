@@ -5,6 +5,7 @@ import ParkingProviderSection from "@/components/ParkingProviderSection/ParkingP
 import ParkingByCitySection from "@/components/ParkingByCitySection/ParkingByCitySection";
 import TestimonialSwiper from "@/components/Carousels/TestimonialSwiper";
 import Scan2ParkBusinessSection from "@/components/Scan2ParkBusinessSection/Scan2ParkBusinessSection";
+import GateUpgradeSection from "@/components/GateUpgradeSection";
 
 export default function Home() {
   const featureSections = [
@@ -14,7 +15,7 @@ export default function Home() {
         "Learn about the smarter way to manage your business's expenses. As an admin for your Scan2Park for Business account, you can use the self-service portal to manage vehicles and users, review expenses, pull monthly reporting, manage parking permissions, and more.",
       imageUrl: "/images/Scan2ParkBusinessSectionImage.jpg",
       buttonText: "Scan2Park for Business",
-      buttonLink: "/business",
+      buttonLink: "/about",
     },
     {
       title: "Seamless Parking Access",
@@ -22,7 +23,7 @@ export default function Home() {
         "Enjoy seamless access to thousands of parking locations nationwide. Our intuitive platform lets you book and pay with just a few taps.",
       imageUrl: "/images/parking-solutions-14.jpg",
       buttonText: "Find Parking",
-      buttonLink: "/locations",
+      buttonLink: "/parking-locations",
     },
     // {
     //   title: "Real-Time Analytics",
@@ -38,7 +39,9 @@ export default function Home() {
     <div className="">
       <HeroSection />
       {/* <InteractiveParkingSteps /> */}
-      <PayForParkingSection />
+      <GateUpgradeSection/>
+      
+      <ParkingProviderSection />
       {featureSections.map((section, index) => (
         <Scan2ParkBusinessSection
           key={index}
@@ -50,8 +53,8 @@ export default function Home() {
           reverse={index % 2 === 1} // Alternate layout
         />
       ))}
-      <ParkingProviderSection />
-      <ParkingByCitySection />
+      <PayForParkingSection />
+      {/* <ParkingByCitySection /> */}
       <TestimonialSwiper />
     </div>
   );

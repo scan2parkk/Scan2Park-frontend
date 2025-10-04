@@ -13,9 +13,9 @@ const AboutPage = () => {
       <WhatIsScan2ParkSection />
       <MissionPeopleSection />
       <CoreValuesSection />
-      <AwardsAccoladesSection />
+      {/* <AwardsAccoladesSection /> */}
       <WhatIsScan2ParkSection />
-      <NewsBlogSection />
+      {/* <NewsBlogSe ction /> */}
     </>
   );
 };

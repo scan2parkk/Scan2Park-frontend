@@ -8,8 +8,8 @@ function WhatIsScan2ParkSection() {
   return (
     <section className="bg-white">
       <MaxWidthContainer>
-        <div className="container mx-auto">
-          <div className="relative rounded-lg overflow-hidden shadow-xl max-w-6xl mx-auto">
+        {/* <div className="container mx-auto"> */}
+          <div className="relative rounded-lg overflow-hidden shadow-xl mx-auto">
             {/* Background Image with Overlay */}
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -43,7 +43,7 @@ function WhatIsScan2ParkSection() {
               </button>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </MaxWidthContainer>
     </section>
   );

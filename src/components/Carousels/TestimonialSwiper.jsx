@@ -1,7 +1,7 @@
 "use client"; // This component uses client-side interactivity for the swiper functionality.
 
 import React, { useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react"; // Using lucide-react for arrow icons
+// import { ArrowLeft, ArrowRight } from "lucide-react"; // Using lucide-react for arrow icons
 import MaxWidthContainer from "../MaxWidthContainer";
 
 function TestimonialSwiper() {
@@ -10,23 +10,23 @@ function TestimonialSwiper() {
   const testimonials = [
     {
       id: 1,
-      quote: "Easy to set up, easy to use! I've used it in several cities.",
-      author: "Vicki L.",
+      quote: "I used Scan@Park for the first time last week — the QR scan entry is so smooth, no waiting in line. Paying from the app made things really easy. Highly recommend!",
+      author: "Jinia Chhabra",
     },
     {
       id: 2,
-      quote: "Scan2Park makes parking a breeze. Highly recommend!",
-      author: "John D.",
+      quote: "Saved me so much time driving around looking for a parking spot. I reserved ahead, just scanned and parked. Scan@Park is a lifesaver!",
+      author: "Khushi Bakshi",
     },
     {
       id: 3,
-      quote: "Never worry about coins again. This app is a lifesaver.",
-      author: "Sarah P.",
+      quote: "Modern, clean, and reliable. Love the gate retrofit option. They didn’t ask me to replace the old gate — just added QR capability and it works perfectly.",
+      author: "Jugraj Singh.",
     },
     {
       id: 4,
-      quote: "Convenient and efficient. A must-have for city parking.",
-      author: "Michael R.",
+      quote: "Payment is secure, interface is intuitive, and support was very responsive when I had a small issue. Overall, very satisfied with Scan@Park.",
+      author: "Jashandeep Kaur",
     },
   ];
 
@@ -53,13 +53,13 @@ function TestimonialSwiper() {
         <div className="container mx-auto">
           <div className="relative bg-[var(--secondary)] rounded-lg p-8 md:p-12 flex items-center justify-center shadow-xl min-h-[200px] overflow-hidden">
             {/* Previous Button */}
-            <button
+            {/* <button
               onClick={goToPrevious}
               className="absolute left-4 md:left-8 bg-white text-[var(--primary)] p-3 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50 transition-colors duration-200 z-10"
               aria-label="Previous testimonial"
             >
               <ArrowLeft className="h-6 w-6" />
-            </button>
+            </button> */}
 
             {/* Testimonial Content Container */}
             {/* This div holds all testimonials and slides them horizontally */}
@@ -72,10 +72,10 @@ function TestimonialSwiper() {
                   key={testimonial.id}
                   className="flex-shrink-0 w-full text-center px-4 md:px-16 flex flex-col justify-center items-center"
                 >
-                  <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 leading-relaxed">
+                  <p className="text-xl md:text-2xl font-semibold text-white mb-4 leading-relaxed">
                     &quot;{testimonial.quote}&quot;
                   </p>
-                  <p className="text-lg text-gray-600 font-medium">
+                  <p className="text-lg text-gray-200 font-medium">
                     - {testimonial.author}
                   </p>
                 </div>
@@ -83,13 +83,13 @@ function TestimonialSwiper() {
             </div>
 
             {/* Next Button */}
-            <button
+            {/* <button
               onClick={goToNext}
               className="absolute right-4 md:right-8 bg-white text-[var(--primary)] p-3 rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50 transition-colors duration-200 z-10"
               aria-label="Next testimonial"
             >
               <ArrowRight className="h-6 w-6" />
-            </button>
+            </button> */}
           </div>
 
           {/* Navigation Dots */}

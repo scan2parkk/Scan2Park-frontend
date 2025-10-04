@@ -12,7 +12,7 @@ function ParkingLocationsPage() {
   const [parkingLocationsData, setParkingLocationsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const itemsPerPage = 10;
+  const itemsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
 
@@ -68,36 +68,35 @@ function ParkingLocationsPage() {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="">
       <MaxWidthContainer>
         <main className="container mx-auto py-12">
-          <h1 className="text-4xl font-bold text-center mb-12">
+          <h1 className="text-4xl font-bold text-center text-white mb-12">
             Find Parking Locations
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {currentLocations.map((location) => (
               <Link
                 href={`/parking-locations/${location._id}`}
                 key={location._id}
               >
-                <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition h-full flex flex-col cursor-pointer">
+                <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition h-full flex flex-col justify-center items-center cursor-pointer">
                   <img
-                    src={
-                      location.imageUrl ||
-                      `https://placehold.co/400x250/000000/ffffff?text=Parking+Lot+${location.name}`
-                    }
+                    src={"/car-insurance.png"}
                     alt={location.name}
-                    className="w-full h-48 object-cover"
+                    className="w-40 object-cover"
                   />
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h2 className="text-xl font-semibold mb-2">
-                      {location.name}
-                    </h2>
-                    <p className="text-gray-600 flex items-center mb-4 flex-grow">
-                      <MapPin className="h-5 w-5 text-[var(--primary)] mr-2" />
-                      {location.address || "Address not available"}
-                    </p>
+                  <div className=" flex flex-col flex-grow w-full p-4">
+                    <div className="flex flex-row justify-between">
+                      <h2 className="text-xl font-semibold mb-2 capitalize">
+                        {location.name}
+                      </h2>
+                      <p className="text-gray-600 flex items-center mb-4">
+                        <MapPin className="h-5 w-5 text-[var(--primary)] mr-2" />
+                        {location.address || "Address not available"}
+                      </p>
+                    </div>
                     <button
                       onClick={(e) => {
                         e.preventDefault();
@@ -130,8 +129,7 @@ function ParkingLocationsPage() {
               <button
                 key={i}
                 onClick={() => handlePageChange(i + 1)}
-                className={`px-4 py-2 rounded-md font-medium ${
-                  currentPage === i + 1
+                className={`px-4 py-2 rounded-md font-medium ${currentPage === i + 1
                     ? "bg-[var(--primary)] text-white"
                     : "bg-white text-gray-700 hover:bg-gray-100"
                   }`}

@@ -95,8 +95,8 @@ export default function Login() {
   }, [router]);
 
   return (
-    <div className="min-h-screen flex gap-50 items-center justify-center bg-gray-100">
-      <div className="">
+    <div className="min-h-screen flex max-md:flex-col gap-50 items-center justify-center bg-gray-100">
+      <div className="max-md:hidden">
         <img
           src="/images/Groupsigninimage.svg"
           alt="Sign in image"
@@ -154,7 +154,7 @@ export default function Login() {
           </Link>
           <Link
             href="/verify-otp"
-            className="text-green-600 hover:text-green-700 hover:underline"
+            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Verify-Otp
           </Link>
