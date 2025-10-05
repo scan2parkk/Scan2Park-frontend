@@ -4,7 +4,7 @@ export default async function SuccessPage({searchParams}) {
    const sessionId = searchParams.session_id;
 
   const res = await fetch(
-    `http://localhost:5000/api/checkout-session?session_id=${sessionId}`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/checkout-session?session_id=${sessionId}`,
     { cache: "no-store" }
   );
   const session = await res.json();

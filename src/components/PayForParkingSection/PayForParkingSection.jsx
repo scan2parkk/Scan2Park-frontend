@@ -15,7 +15,7 @@ function PayForParkingSection() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url('/images/PayForParkingSectionImage.webp')`, // Replace with your actual image URL
+              backgroundImage: `url('/WhatsApp Image 2025-10-05 at 13.56.57_c046bb0e.jpg')`, // Replace with your actual image URL
               backgroundBlendMode: "multiply",
               backgroundColor: "rgba(0, 0, 0, 0.4)", // Dark overlay for text readability
             }}
@@ -32,7 +32,7 @@ function PayForParkingSection() {
                 Park. Pay. Go.
               </h2>
               <p className="text-base md:text-lg mb-6">
-                when you are vale paragraph ki jagah Whether you’re heading to
+                Whether you’re heading to
                 class, work, or an event, our smart system makes parking
                 effortless. Reserve in advance, pay on the go, and enjoy a
                 smooth, eco-friendly experience every time.

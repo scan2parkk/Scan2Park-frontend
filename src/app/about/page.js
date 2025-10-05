@@ -14,7 +14,7 @@ const AboutPage = () => {
       <MissionPeopleSection />
       <CoreValuesSection />
       {/* <AwardsAccoladesSection /> */}
-      <WhatIsScan2ParkSection />
+      {/* <WhatIsScan2ParkSection /> */}
       {/* <NewsBlogSe ction /> */}
     </>
   );

@@ -98,7 +98,7 @@ export default function Login() {
     <div className="min-h-screen flex max-md:flex-col gap-50 items-center justify-center bg-gray-100">
       <div className="max-md:hidden">
         <img
-          src="/images/Groupsigninimage.svg"
+          src="/undraw_access-account_aydp.svg"
           alt="Sign in image"
           className="object-contain"
         />
