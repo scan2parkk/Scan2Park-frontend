@@ -37,7 +37,7 @@ function CoreValuesSection() {
             {/* Card 1: Be Curious */}
             <div className="bg-transparent text-white rounded-lg p-6 shadow-lg flex flex-col items-start ">
               <div className="bg-[var(--secondary)] p-3 rounded-full mb-4">
-                <Lightbulb className="h-8 w-8 text-[var(--primary)]" />
+                <Lightbulb className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Be Curious</h3>
               <p className="text-lg font-medium text-white mb-4">
@@ -64,7 +64,7 @@ function CoreValuesSection() {
             {/* Card 2: Inch by Inch */}
             <div className="bg-transparent text-white rounded-lg p-6 shadow-lg flex flex-col items-start ">
               <div className="bg-[var(--secondary)] p-3 rounded-full mb-4">
-                <Compass className="h-8 w-8 text-[var(--primary)]" />
+                <Compass className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Inch by Inch</h3>
               <p className="text-lg font-medium text-white mb-4">
@@ -94,7 +94,7 @@ function CoreValuesSection() {
             {/* Card 3: Play Well Together */}
             <div className="bg-transparent text-white rounded-lg p-6 shadow-lg flex flex-col items-start ">
               <div className="bg-[var(--secondary)] p-3 rounded-full mb-4">
-                <Users className="h-8 w-8 text-[var(--primary)]" />
+                <Users className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Play Well Together</h3>
               <p className="text-lg font-medium text-white mb-4">

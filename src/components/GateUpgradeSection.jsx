@@ -28,7 +28,7 @@ export default function GateUpgradeSection() {
             Give Your Parking a Smart Touch
           </h2>
           <p className="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">
-            Scan@Park makes your existing gates intelligent. Enable quick QR
+            Scan2Park makes your existing gates intelligent. Enable quick QR
             scans, secure entry, and hassle-free payments without expensive new
             infrastructure. Save more while parking smarter.
           </p>

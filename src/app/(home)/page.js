@@ -13,15 +13,15 @@ export default function Home() {
       title: "Scan2Park for Business",
       description:
         "Learn about the smarter way to manage your business's expenses. As an admin for your Scan2Park for Business account, you can use the self-service portal to manage vehicles and users, review expenses, pull monthly reporting, manage parking permissions, and more.",
-      imageUrl: "/images/Scan2ParkBusinessSectionImage.jpg",
+      imageUrl: "/undraw_workspace_s6wf (1).svg",
       buttonText: "Scan2Park for Business",
-      buttonLink: "/about",
+      buttonLink: "/contact-us",
     },
     {
       title: "Seamless Parking Access",
       description:
         "Enjoy seamless access to thousands of parking locations nationwide. Our intuitive platform lets you book and pay with just a few taps.",
-      imageUrl: "/images/parking-solutions-14.jpg",
+      imageUrl: "/undraw_in-the-office_e7pg.svg",
       buttonText: "Find Parking",
       buttonLink: "/parking-locations",
     },

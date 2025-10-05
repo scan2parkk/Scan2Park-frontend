@@ -88,13 +88,13 @@ function Footer() {
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                noida
+                Noida
               </a>
               <a
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                gurugram
+                Gurugram
               </a>
               <a
                 href="/parking-locations"
@@ -144,7 +144,7 @@ function Footer() {
 
         {/* Bottom Bar */}
         <div className="container mx-auto px-4 mt-12 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 space-y-4 md:space-y-0">
-          <p>&copy;2024 Scan2Park, LLC. All rights reserved.</p>
+          <p>&copy;2025 Scan2Park, LLC. All rights reserved.</p>
           <div className="flex flex-wrap justify-center md:justify-end space-x-4">
             <a
               href="#"
@@ -164,12 +164,7 @@ function Footer() {
             >
               Accessibility
             </a>
-            <a
-              href="#"
-              className="hover:text-white transition-colors duration-200"
-            >
-              Do not sell my personal information
-            </a>
+           
           </div>
         </div>
 

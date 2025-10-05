@@ -10,22 +10,22 @@ function TestimonialSwiper() {
   const testimonials = [
     {
       id: 1,
-      quote: "I used Scan@Park for the first time last week — the QR scan entry is so smooth, no waiting in line. Paying from the app made things really easy. Highly recommend!",
+      quote: "I used Scan2Park for the first time last week — the QR scan entry is so smooth, no waiting in line. Paying from the app made things really easy. Highly recommend!",
       author: "Jinia Chhabra",
     },
     {
       id: 2,
-      quote: "Saved me so much time driving around looking for a parking spot. I reserved ahead, just scanned and parked. Scan@Park is a lifesaver!",
+      quote: "Saved me so much time driving around looking for a parking spot. I reserved ahead, just scanned and parked. Scan2Park is a lifesaver!",
       author: "Khushi Bakshi",
     },
     {
       id: 3,
       quote: "Modern, clean, and reliable. Love the gate retrofit option. They didn’t ask me to replace the old gate — just added QR capability and it works perfectly.",
-      author: "Jugraj Singh.",
+      author: "Jugraj Singh",
     },
     {
       id: 4,
-      quote: "Payment is secure, interface is intuitive, and support was very responsive when I had a small issue. Overall, very satisfied with Scan@Park.",
+      quote: "Payment is secure, interface is intuitive, and support was very responsive when I had a small issue. Overall, very satisfied with Scan2Park.",
       author: "Jashandeep Kaur",
     },
   ];

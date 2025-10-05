@@ -69,13 +69,19 @@ function Header() {
                 href="/parking-locations"
                 className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
               >
-                Parking Location
+                Location
               </a>
               <a
                 href="/about"
                 className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
               >
                 About Us
+              </a>
+              <a
+                href="/contact-us"
+                className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
+              >
+                Contact Us
               </a>
               {isLoggedIn && (
                 <a
@@ -145,13 +151,19 @@ function Header() {
                 href="/parking-locations"
                 className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
               >
-                Parking Location
+                Location
               </a>
               <a
                 href="/about"
                 className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
               >
                 About Us
+              </a>
+              <a
+                href="/contact-us"
+                className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
+              >
+                Contact Us
               </a>
               {isLoggedIn && (
                 <a

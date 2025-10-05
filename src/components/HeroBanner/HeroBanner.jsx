@@ -21,14 +21,13 @@ function HeroSection() {
               We lead the way in car park management
             </h1>
             <p className="text-lg md:text-[20px] md:leading-7 mb-6">
-              With offices in the India, Denmark, Germany, Switzerland, Australia,
-              New Zealand and the US, we aim to bring intelligent technology and
-              integrated parking services to the world.
+              With offices in all over India, we aim to bring intelligent
+              technology and integrated parking services to the world.
             </p>
 
             <div className="mb-4 flex gap-2.5">
               <a
-                href="https://www.smartparking.com/why-choose-us/"
+                href="/parking-locations"
                 target="_self"
                 className="text-[16px] text-white leading-4 bg-[var(--primary)] p-[15px] rounded-[3px]"
               >

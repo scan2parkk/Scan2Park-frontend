@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ArrowRight } from "lucide-react"; // Using lucide-react for the arrow icon
 import MaxWidthContainer from "../MaxWidthContainer";
+import Link from "next/link";
 
 function ParkingProviderSection() {
   const [isHovered, setIsHovered] = useState(false);
@@ -34,12 +35,14 @@ function ParkingProviderSection() {
                 isHovered ? "translate-x-5" : "translate-x-0"
               }`}
             >
-              {/* <button
-                className={`bg-white text-[var(--primary)] p-4 rounded-md shadow-lg flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50 transition-transform duration-400 ease-out`}
-                aria-label="Learn more about parking solutions"
-              >
-                <ArrowRight className={`h-8 w-8`} />
-              </button> */}
+              <Link href={"/contact-us"}>
+                <button
+                  className={`bg-white text-[var(--primary)] p-4 rounded-md shadow-lg flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-[var(--secondary)] focus:ring-opacity-50 transition-transform duration-400 ease-out`}
+                  aria-label="Learn more about parking solutions"
+                >
+                  <ArrowRight className={`h-8 w-8`} />
+                </button>
+              </Link>
             </div>
           </div>
         </div>

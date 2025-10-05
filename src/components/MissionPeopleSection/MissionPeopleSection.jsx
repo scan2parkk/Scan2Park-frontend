@@ -22,11 +22,7 @@ function MissionPeopleSection() {
       description:
         "Meet the team driving Scan2Park forward, committed to innovation and excellence in the parking industry.",
     },
-    culture: {
-      title: "A collaborative environment",
-      description:
-        "At Scan2Park, we foster a culture of collaboration, innovation, and customer-centricity, empowering our employees to thrive.",
-    },
+  
   };
 
   return (
@@ -39,7 +35,7 @@ function MissionPeopleSection() {
               Our mission & people
             </h2>
             <p className="text-lg text-gray-600">
-              For decades, parking was a hassle. Then in 2008, Scan2Park
+              For decades, parking was a hassle. Then in 2025, Scan2Park
               launched with a simple goal: make parking easier. Today, our team
               is committed to creating tech-based solutions that power smart
               mobility and make parking hassles of the past obsolete.
@@ -49,7 +45,7 @@ function MissionPeopleSection() {
           {/* Mid Section - Tabs and Blue Box */}
           <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 mb-12">
             {/* Left Side - Mission/Vision/Leadership/Culture Tabs */}
-            <div className="flex flex-col md:flex-row lg:flex-col items-start gap-6 w-full lg:w-1/2">
+            <div className="flex flex-col md:flex-row  items-start gap-6 w-full justify-between">
               <div className="flex flex-row md:flex-col lg:flex-col gap-4 md:gap-0 lg:gap-4 w-full md:w-auto lg:w-full">
                 {Object.keys(tabContent).map((tabKey) => (
                   <button
@@ -80,7 +76,7 @@ function MissionPeopleSection() {
             </div>
 
             {/* Right Side - Blue Box */}
-            <div className="bg-[var(--primary)] text-white p-8 md:p-12 rounded-lg shadow-xl flex items-center justify-center text-center w-full lg:w-1/2 max-w-md lg:max-w-none min-h-[250px]">
+            {/* <div className="bg-[var(--primary)] text-white p-8 md:p-12 rounded-lg shadow-xl flex items-center justify-center text-center w-full lg:w-1/2 max-w-md lg:max-w-none min-h-[250px]">
               <p className="text-3xl md:text-4xl font-bold leading-tight">
                 Striving for
                 <br />
@@ -88,14 +84,7 @@ function MissionPeopleSection() {
                 <br />
                 Everywhere.
               </p>
-            </div>
-          </div>
-
-          {/* Bottom Section - Careers Button */}
-          <div className="text-center mt-12">
-            <button className="bg-white border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-green-50 hover:text-[var(--primary)] font-semibold py-3 px-8 rounded-md shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-opacity-50">
-              Scan2Park careers
-            </button>
+            </div> */}
           </div>
         </div>
       </MaxWidthContainer>

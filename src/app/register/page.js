@@ -180,7 +180,7 @@ export default function Register() {
     <div className="min-h-screen gap-4 flex max-md:flex-col items-center justify-center bg-gray-100">
       <div className="max-md:hidden">
         <img
-          src="/images/Frame-427320611.svg"
+          src="/undraw_loving-it_hspq.svg"
           alt="Sign in image"
           className="object-contain"
         />

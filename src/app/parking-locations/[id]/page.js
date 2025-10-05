@@ -6,6 +6,9 @@ import MaxWidthContainer from "@/components/MaxWidthContainer";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { use } from "react";
+import CheckoutButton from "@/components/CheckoutButton";
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 function ParkingSlotDetailPage({ params }) {
   const { id } = use(params);
@@ -74,8 +77,23 @@ function ParkingSlotDetailPage({ params }) {
     setIsModalOpen(true);
   };
 
+  async function handleCheckout() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/create-checkout-session`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: [{ name: 'Test Item', amount: 5000, quantity: 1 }] // 5000 cents = $50
+      })
+    });
+    const { id } = await res.json();
+    const stripe = await stripePromise;
+    const { error } = await stripe.redirectToCheckout({ sessionId: id });
+    if (error) console.error(error);
+  }
+
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
+    await handleCheckout();
     const token = localStorage.getItem("token");
     if (!token) {
       router.push("/login");
