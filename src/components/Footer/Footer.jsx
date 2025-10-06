@@ -106,7 +106,7 @@ function Footer() {
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                Hydrabaad
+                Hydrabad
               </a>
               <a
                 href="/parking-locations"
@@ -124,7 +124,7 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/about"
+                  href="/contact-us"
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm font-semibold"
                 >
                   Contact us

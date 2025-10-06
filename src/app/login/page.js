@@ -100,7 +100,7 @@ export default function Login() {
         <img
           src="/undraw_access-account_aydp.svg"
           alt="Sign in image"
-          className="object-contain"
+          className="object-contain max-h-[500px] max-w-md"
         />
       </div>
       <div className="bg-white p-8 rounded-lg w-full max-w-md">
