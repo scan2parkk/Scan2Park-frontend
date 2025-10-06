@@ -12,20 +12,20 @@ const Scan2ParkBusinessSection = ({
   reverse = false,
 }) => {
   return (
-    <section className="bg-white py-5">
+    <section className="bg-white py-5 ">
       <MaxWidthContainer>
         {/* <div className="container mx-auto"> */}
           <div
             className={`flex flex-col ${
               reverse ? "md:flex-row-reverse" : "md:flex-row"
-            } items-center justify-center gap-8 md:gap-16 mx-auto bg-white rounded-lg border border-gray-300 overflow-hidden p-6 md:p-0 max-h-[400px]`}
+            } items-center justify-center md:p-12 gap-8 md:gap-16 mx-auto bg-white rounded-lg border border-gray-300 overflow-hidden p-6  md:max-h-[400px]`}
           >
             {/* Image Section */}
             <div className="flex-shrink-0 w-full md:w-1/2">
               <img
                 src={imageUrl}
                 alt={title}
-                className="w-full h-auto rounded-lg md:rounded-none md:rounded-l-lg object-cover"
+                className="w-full max-w-[450px] h-auto rounded-lg md:rounded-none md:rounded-l-lg object-cover"
               />
             </div>
 

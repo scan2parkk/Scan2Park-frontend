@@ -13,7 +13,7 @@ function PayForParkingSection() {
         <div className="relative rounded-lg overflow-hidden shadow-xl mx-auto">
           {/* Background Image with Overlay */}
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-top"
             style={{
               backgroundImage: `url('/WhatsApp Image 2025-10-05 at 13.56.57_c046bb0e.jpg')`, // Replace with your actual image URL
               backgroundBlendMode: "multiply",
@@ -25,7 +25,7 @@ function PayForParkingSection() {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 p-8 md:p-16 flex flex-col md:flex-row items-center justify-between">
+          <div className="relative z-10 p-8 md:py-28 md:px-20 flex flex-col md:flex-row items-center justify-between">
             {/* Left Content - Text and Button */}
             <div className="text-white text-center md:text-left max-w-xl mb-8 md:mb-0">
               <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
