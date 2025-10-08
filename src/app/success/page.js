@@ -1,7 +1,9 @@
 "use client";
 
-export default async function SuccessPage({searchParams}) {
-   const sessionId = searchParams.session_id;
+import Link from "next/link";
+
+export default async function SuccessPage({ searchParams }) {
+  const sessionId = searchParams.session_id;
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/checkout-session?session_id=${sessionId}`,
@@ -18,6 +20,9 @@ export default async function SuccessPage({searchParams}) {
         <div className="mt-6 p-4 bg-gray-800 rounded-lg">
           <p>Amount Paid: {session.amount_total / 100} {session.currency.toUpperCase()}</p>
           <p>Status: {session.payment_status}</p>
+          <Link href={"/parking-locations"} className="mt-6 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
+            Go to Parking locations
+            </Link>
         </div>
       )}
     </div>
