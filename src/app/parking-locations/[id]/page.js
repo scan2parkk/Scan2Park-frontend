@@ -93,7 +93,9 @@ function ParkingSlotDetailPage({ params }) {
 
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
-    await handleCheckout();
+    const stripRes = await handleCheckout();
+    console.log(stripRes);
+    
     const token = localStorage.getItem("token");
     if (!token) {
       router.push("/login");
