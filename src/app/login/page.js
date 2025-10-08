@@ -55,7 +55,7 @@ export default function Login() {
       const user = profileRes.data;
       setTimeout(() => {
         if (user.role === "admin") {
-          router.push("/dashboard");
+          router.push("/admin");
         } else {
           router.push("/");
         }
@@ -80,7 +80,7 @@ export default function Login() {
           const user = profileRes.data;
           setTimeout(() => {
             if (user.role === "admin") {
-              router.push("/dashboard");
+              router.push("/admin");
             } else {
               router.push("/");
             }

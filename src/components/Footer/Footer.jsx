@@ -106,7 +106,7 @@ function Footer() {
                 href="/parking-locations"
                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
               >
-                Hydrabad
+                Hyderabad
               </a>
               <a
                 href="/parking-locations"
