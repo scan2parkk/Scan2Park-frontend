@@ -65,64 +65,64 @@ function AdminHeader() {
           {/* Desktop Navigation */}
           <div className="flex items-center">
             <nav className="hidden md:flex items-center space-x-8">
-              <a
+              <Link
                 href="/admin"
                 className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
               >
                 Dashboard
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/users"
                 className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
               >
                 Manage Users
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/locations"
                 className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
               >
                 Manage Locations
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/slots"
                 className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
               >
                 Manage Slots
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/bookings"
                 className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
               >
                 Manage Bookings
-              </a>
+              </Link>
               {isLoggedIn && userRole === "admin" && (
-                <a
+                <Link
                   href="/admin/profile"
                   className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
                 >
                   Profile
-                </a>
+                </Link>
               )}
               {/* Right Section - Icons */}
               <div className="flex items-center space-x-4">
                 {isLoggedIn && userRole === "admin" ? (
                   <div className="w-[110px] flex justify-end">
-                    <a
+                    <Link
                       href="/"
                       className="hover:underline hover:text-[var(--primary)]"
                       onClick={handleLogout}
                     >
                       Logout
-                    </a>
+                    </Link>
                   </div>
                 ) : (
                   <div>
-                    <a
+                    <Link
                       href="/login"
                       className="hover:underline hover:text-[var(--primary)] mr-2"
                     >
                       Login
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -146,62 +146,62 @@ function AdminHeader() {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 border-t border-gray-200 animate-slide-down">
             <nav className="flex flex-col items-start space-y-4">
-              <a
+              <Link
                 href="/admin"
                 className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
               >
                 Dashboard
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/users"
                 className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
               >
                 Manage Users
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/locations"
                 className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
               >
                 Manage Locations
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/slots"
                 className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
               >
                 Manage Slots
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/admin/bookings"
                 className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
               >
                 Manage Bookings
-              </a>
+              </Link>
               {isLoggedIn && userRole === "admin" && (
-                <a
+                <Link
                   href="/admin/profile"
                   className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
                 >
                   Profile
-                </a>
+                </Link>
               )}
               {isLoggedIn && userRole === "admin" ? (
                 <div className="w-[110px] flex justify-end">
-                  <a
+                  <Link
                     href="/"
                     className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
                     onClick={handleLogout}
                   >
                     Logout
-                  </a>
+                  </Link>
                 </div>
               ) : (
                 <div>
-                  <a
+                  <Link
                     href="/login"
                     className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
                   >
                     Login
-                  </a>
+                  </Link>
                 </div>
               )}
             </nav>

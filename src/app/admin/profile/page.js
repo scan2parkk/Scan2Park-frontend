@@ -40,7 +40,7 @@ export default function AdminProfile() {
               <h2 className="text-xl font-semibold text-gray-700 mb-4">Profile Details</h2>
               <div className="space-y-4">
                 <p><strong>Name:</strong> <span className="capitalize"> {user.name}</span></p>
-                <p><strong>Email:</strong> <span className="capitalize">{user.email}</span></p>
+                <p><strong>Email:</strong> <span className="">{user.email}</span></p>
                 <p><strong>Role:</strong> <span className="">{user.role}</span></p>
               </div>
             </div>
