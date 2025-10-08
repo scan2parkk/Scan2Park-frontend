@@ -77,12 +77,12 @@ export default function VerifyOtpPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center gap-40 bg-gray-100">
       <div className="">
         <img
-          src="/images/Frame-427320611.svg"
+          src="/undraw_reviewed-docs_tng3.svg"
           alt="Sign in image"
-          className="object-contain"
+          className="object-contain max-w-md"
         />
       </div>
       <div className="bg-white p-8 rounded-lg w-full max-w-md">
@@ -96,7 +96,7 @@ export default function VerifyOtpPage() {
         </p>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {success && <p className="text-green-500 text-center mb-4">{success}</p>}
+        {success && <p className="text-[var(--primary)] text-center mb-4">{success}</p>}
         {resendMsg && <p className="text-blue-600 text-center mb-4">{resendMsg}</p>}
 
         <form onSubmit={handleOtpSubmit}>
@@ -136,7 +136,7 @@ export default function VerifyOtpPage() {
 
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
+            className="w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
           >
             Verify OTP
           </button>
@@ -147,7 +147,7 @@ export default function VerifyOtpPage() {
           <button
             onClick={handleResendOtp}
             disabled={loading}
-            className="text-sm text-green-600 hover:text-green-700 hover:underline disabled:opacity-50"
+            className="text-sm text-[var(--primary)] hover:text-[var(--primary)] hover:underline disabled:opacity-50"
           >
             {loading ? "Resending..." : "Resend OTP"}
           </button>
@@ -156,13 +156,13 @@ export default function VerifyOtpPage() {
         <p className="flex justify-between text-left mt-4">
           <Link
             href="/register"
-            className="text-green-600 hover:text-green-700 hover:underline"
+            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Register
           </Link>
           <Link
             href="/login"
-            className="text-green-600 hover:text-green-700 hover:underline"
+            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Login
           </Link>
