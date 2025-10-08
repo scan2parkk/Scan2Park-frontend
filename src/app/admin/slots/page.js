@@ -113,27 +113,27 @@ export default function ManageSlots() {
       <MaxWidthContainer>
         <div className="py-8">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-gray-800">Manage Slots</h1>
+            <h1 className="text-3xl font-bold text-[var(--primary)]">Manage Slots</h1>
             <div className="relative">
               <input
                 type="text"
                 placeholder="Search by slot number or location..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-[var(--primary)] focus:ring-[var(--primary)] w-64"
+                className="pl-10 pr-4 py-2 rounded-md border-2 border-[var(--primary)] shadow-sm focus:border-[var(--primary)] focus:ring-[var(--primary)] w-64"
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             </div>
           </div>
           <div className="mb-6 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">Add New Slot</h2>
+            <h2 className="text-xl font-semibold text-[var(--primary)] mb-4">Add New Slot</h2>
             <form onSubmit={handleAdd} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">Location</label>
                 <select
                   value={form.locationId}
                   onChange={(e) => setForm({ ...form, locationId: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[var(--primary)] focus:ring-[var(--primary)]"
+                  className="mt-1 p-2 block w-full rounded-md border-2 border-[var(--primary)] shadow-sm focus:border-[var(--primary)] focus:ring-[var(--primary)]"
                   required
                 >
                   <option value="">Select Location</option>
@@ -148,13 +148,13 @@ export default function ManageSlots() {
                   type="text"
                   value={form.slotNumber}
                   onChange={(e) => setForm({ ...form, slotNumber: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[var(--primary)] focus:ring-[var(--primary)]"
+                  className="mt-1 p-2 block w-full border-2 rounded-md border-[var(--primary)] shadow-sm focus:border-[var(--primary)] focus:ring-[var(--primary)]"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center px-4 py-2 bg-[var(--primary)] text-white rounded-md hover:bg-[var(--primary-dark)]"
+                className="inline-flex items-center px-4 py-2 bg-[var(--primary)] text-white rounded-md hover:bg-white hover:text-[var(--primary)] border-2 border-[var(--primary)] transition-colors"
               >
                 <Plus className="h-5 w-5 mr-2" /> Add Slot
               </button>
