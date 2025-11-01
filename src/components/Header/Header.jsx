@@ -12,6 +12,7 @@ function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const router = useRouter();
+console.log(isLoggedIn,"islogged in");
 
   // Function to toggle the mobile menu
   const toggleMobileMenu = () => {
