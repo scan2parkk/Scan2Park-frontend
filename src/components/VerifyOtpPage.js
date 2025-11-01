@@ -37,8 +37,24 @@ export default function VerifyOtpPage() {
       );
 
       if (res.data.success) {
-        setSuccess("Email verified successfully! Redirecting to login...");
-        setTimeout(() => router.push("/login"), 2000);
+        localStorage.setItem("token", res.data.token);
+        setSuccess("Email verified successfully! Redirecting...");
+        // setTimeout(() => router.push("/login"), 2000);
+        // Fetch user profile to check role
+        const profileRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/user/profile`,
+          {
+            headers: { Authorization: `Bearer ${res.data.token}` },
+          }
+        );
+        const user = profileRes.data;
+        setTimeout(() => {
+          if (user.role === "admin") {
+            router.push("/admin");
+          } else {
+            router.push("/");
+          }
+        }, 2000);
       } else {
         setError("Invalid OTP. Please try again.");
       }
@@ -136,7 +152,7 @@ export default function VerifyOtpPage() {
 
           <button
             type="submit"
-            className="w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
+            className="cursor-pointer w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
           >
             Verify OTP
           </button>
@@ -147,7 +163,7 @@ export default function VerifyOtpPage() {
           <button
             onClick={handleResendOtp}
             disabled={loading}
-            className="text-sm text-[var(--primary)] hover:text-[var(--primary)] hover:underline disabled:opacity-50"
+            className="cursor-pointer text-sm text-[var(--primary)] hover:text-[var(--primary)] hover:underline disabled:opacity-50"
           >
             {loading ? "Resending..." : "Resend OTP"}
           </button>
@@ -156,13 +172,13 @@ export default function VerifyOtpPage() {
         <p className="flex justify-between text-left mt-4">
           <Link
             href="/register"
-            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
+            className="cursor-pointer text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Register
           </Link>
           <Link
             href="/login"
-            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
+            className="cursor-pointer text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Login
           </Link>

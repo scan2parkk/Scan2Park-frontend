@@ -255,7 +255,7 @@ export default function Register() {
           </div>
           <button
             type="submit"
-            className="w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
+            className="cursor-pointer w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
           >
             Sign up
           </button>
@@ -266,13 +266,13 @@ export default function Register() {
           <div className="flex justify-between">
             <Link
               href="/login"
-              className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
+              className="cursor-pointer text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
             >
               Login
             </Link>
             <Link
               href="/verify-otp"
-              className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
+              className="cursor-pointer text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
             >
               Verify-otp
             </Link>

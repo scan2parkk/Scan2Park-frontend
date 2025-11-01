@@ -139,7 +139,7 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
+            className="cursor-pointer w-full bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
           >
             Login
           </button>
@@ -148,13 +148,13 @@ export default function Login() {
           <span className="text-gray-700">Don&apos;t have an account/need verification?</span>
           <Link
             href="/register"
-            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
+            className="cursor-pointer text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Sign up here
           </Link>
           <Link
             href="/verify-otp"
-            className="text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
+            className="cursor-pointer text-[var(--primary)] hover:text-[var(--primary)] hover:underline"
           >
             Verify-Otp
           </Link>
