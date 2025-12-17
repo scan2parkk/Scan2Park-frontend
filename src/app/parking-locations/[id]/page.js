@@ -9,7 +9,7 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 function ParkingSlotDetailPage({ params }) {
-  const { id:locationParamsId } = use( params);
+  const { id: locationParamsId } = use(params);
   const [location, setLocation] = useState(null);
   const [slots, setSlots] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -138,6 +138,8 @@ function ParkingSlotDetailPage({ params }) {
         }
 
         // Proceed with booking
+        console.log(bookingData.startTime, bookingData.endTime, "booking data");
+
         const bookingRes = await axios.post(
           `${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/parking/book`,
           {
@@ -161,8 +163,35 @@ function ParkingSlotDetailPage({ params }) {
     }
   };
 
+
+  const validateBookingTime = (startTime, endTime) => {
+    const now = new Date();
+    const start = new Date(startTime);
+    const end = new Date(endTime);
+
+    if (start <= now) {
+      return "Start time must be greater than the current time";
+    }
+
+    if (end <= start) {
+      return "End time must be greater than the start time";
+    }
+
+    return null; // valid
+  };
+
+
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
+
+    const validationError = validateBookingTime(
+      bookingForm.startTime,
+      bookingForm.endTime
+    );
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
     if (!bookingForm.startTime || !bookingForm.endTime) {
       setError("Please provide start and end times");
       return;
@@ -217,11 +246,10 @@ function ParkingSlotDetailPage({ params }) {
                     <div
                       key={slot._id}
                       onClick={() => slot.isAvailable && handleBookSlot(slot)}
-                      className={`w-10 h-10 md:w-20 md:h-20 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${
-                        slot.isAvailable
-                          ? "bg-[var(--secondary)] text-white hover:bg-[var(--primary)]"
-                          : "bg-red-600 text-white cursor-not-allowed opacity-50"
-                      }`}
+                      className={`w-10 h-10 md:w-20 md:h-20 flex items-center justify-center text-xs font-bold mx-1 rounded-md cursor-pointer ${slot.isAvailable
+                        ? "bg-[var(--secondary)] text-white hover:bg-[var(--primary)]"
+                        : "bg-red-600 text-white cursor-not-allowed opacity-50"
+                        }`}
                       style={{
                         pointerEvents: slot.isAvailable ? "auto" : "none",
                       }}
@@ -243,6 +271,7 @@ function ParkingSlotDetailPage({ params }) {
                   <input
                     type="datetime-local"
                     name="startTime"
+                    min={new Date().toISOString().slice(0, 16)}
                     value={bookingForm.startTime}
                     onChange={(e) =>
                       setBookingForm((prev) => ({
@@ -256,6 +285,7 @@ function ParkingSlotDetailPage({ params }) {
                   <input
                     type="datetime-local"
                     name="endTime"
+                    min={bookingForm.startTime}
                     value={bookingForm.endTime}
                     onChange={(e) =>
                       setBookingForm((prev) => ({

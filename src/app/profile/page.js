@@ -65,6 +65,17 @@ export default function UserProfile() {
   if (error) {
     return <div>Error: {error}</div>;
   }
+  function formatZuluTime(dateString) {
+    const date = new Date(dateString);
+
+    return `${date.getUTCDate().toString().padStart(2, "0")}-${(date.getUTCMonth() + 1)
+      .toString()
+      .padStart(2, "0")}-${date.getUTCFullYear()} 
+${date.getUTCHours().toString().padStart(2, "0")}:${date
+        .getUTCMinutes()
+        .toString()
+        .padStart(2, "0")}`;
+  }
 
   return (
     <div className="min-h-screen p-8">
@@ -141,9 +152,9 @@ export default function UserProfile() {
                       </span>
                     </p>
                     <p className="text-sm text-gray-500 mt-1">
-                      {new Date(booking.startTime).toLocaleString()} <br />
+                      {formatZuluTime(booking.startTime)} <br />
                       to <br />
-                      {new Date(booking.endTime).toLocaleString()}
+                      {formatZuluTime(booking.endTime)}
                     </p>
                   </div>
                 ))}
@@ -160,27 +171,29 @@ export default function UserProfile() {
             </h2>
             {userBookingHistory.length > 0 ? (
               <div className="grid gap-4 md:grid-cols-2 max-h-[350px] overflow-y-scroll">
-                {userBookingHistory.map((booking) => (
-                  <div
-                    key={booking._id}
-                    className="p-4 bg-gray-50 rounded-lg border border-gray-200"
-                  >
-                    <h3 className="text-lg font-semibold text-gray-800">
-                      {booking.locationId.name}
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      Slot:{" "}
-                      <span className="font-medium">
-                        {booking.slotId.slotNumber}
-                      </span>
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {new Date(booking.startTime).toLocaleString()} <br />
-                      to <br />
-                      {new Date(booking.endTime).toLocaleString()}
-                    </p>
-                  </div>
-                ))}
+                {userBookingHistory.map((booking) => {
+                  return (
+                    <div
+                      key={booking._id}
+                      className="p-4 bg-gray-50 rounded-lg border border-gray-200"
+                    >
+                      <h3 className="text-lg font-semibold text-gray-800">
+                        {booking.locationId.name}
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        Slot:{" "}
+                        <span className="font-medium">
+                          {booking.slotId.slotNumber}
+                        </span>
+                      </p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        {formatZuluTime(booking.startTime)} <br />
+                        to <br />
+                        {formatZuluTime(booking.endTime)}
+                      </p>
+                    </div>
+                  )
+                })}
               </div>
             ) : (
               <p className="text-gray-500 italic">No booking history</p>

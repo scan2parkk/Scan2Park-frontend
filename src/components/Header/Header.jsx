@@ -12,7 +12,7 @@ function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const router = useRouter();
-console.log(isLoggedIn,"islogged in");
+  console.log(isLoggedIn, "islogged in");
 
   // Function to toggle the mobile menu
   const toggleMobileMenu = () => {
@@ -71,6 +71,12 @@ console.log(isLoggedIn,"islogged in");
                 className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
               >
                 Location
+              </a>
+              <a
+                href="/smart-slots"
+                className="text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-base font-medium rounded-md"
+              >
+                Smart Slots
               </a>
               <a
                 href="/about"
@@ -153,6 +159,12 @@ console.log(isLoggedIn,"islogged in");
                 className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
               >
                 Location
+              </a>
+              <a
+                href="/smart-slots"
+                className="block text-gray-700 hover:text-[var(--primary)] transition-colors duration-200 text-lg font-medium py-2 w-full px-8 rounded-md"
+              >
+                Smart Slots
               </a>
               <a
                 href="/about"

@@ -151,14 +151,24 @@ export default function Register() {
 
   const { name, email, password, role } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const validateEmailRegex = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
   // Step 1: Handle registration
   const onSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
+
+    if (!validateEmailRegex(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000"}/api/auth/register`,
