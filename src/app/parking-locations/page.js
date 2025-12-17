@@ -107,7 +107,7 @@ function ParkingLocationsPage() {
                           router.push(`/parking-locations/${location._id}`);
                         }
                       }}
-                      className="mt-auto bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md"
+                      className="mt-auto bg-[var(--primary)] hover:bg-[var(--primary)] text-white p-2 rounded-md cursor-pointer"
                     >
                       Book Now
                     </button>
